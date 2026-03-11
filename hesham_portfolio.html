@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hesham Asim Khan | Mechatronics Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#080808;--s1:#0c0c0c;--s2:#121212;--s3:#181818;
+  --b1:#1a1a1a;--b2:#252525;--b3:#303030;
+  --acc:#e07020;--acc2:#f09040;--acc-dim:rgba(224,112,32,.12);
+  --txt:#e8e4dc;--txt2:#c4c0b8;--mut:#707068;--mut2:#484844;
+  --mono:'Space Mono',monospace;--sans:'Syne',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:var(--sans);line-height:1.6}
+
+/* Subtle noise */
+body::before{
+  content:'';position:fixed;inset:0;
+  background:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:9999;
+}
+
+/* Grid bg */
+.grid-bg{
+  position:fixed;inset:0;z-index:0;
+  background-image:
+    linear-gradient(rgba(224,112,32,.01) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(224,112,32,.01) 1px,transparent 1px);
+  background-size:80px 80px;
+  pointer-events:none;
+}
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1rem 3rem;
+  background:rgba(8,8,8,.95);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--b1);
+}
+.nav-logo{
+  font-family:var(--mono);font-size:.75rem;
+  color:var(--acc);letter-spacing:.2em;
+  text-transform:uppercase;font-weight:700;
+}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{
+  font-family:var(--mono);font-size:.65rem;
+  color:var(--mut);text-decoration:none;
+  letter-spacing:.1em;text-transform:uppercase;
+  transition:color .3s;
+}
+.nav-links a:hover{color:var(--acc)}
+
+/* ─── HERO ─── */
+.hero{
+  min-height:100vh;
+  display:flex;align-items:center;
+  padding:8rem 3rem 4rem;
+  position:relative;z-index:1;
+}
+.hero-content{
+  display:grid;
+  grid-template-columns:240px 1fr;
+  gap:4rem;
+  max-width:1100px;
+  margin:0 auto;
+  align-items:center;
+}
+.hero-photo{
+  width:240px;height:280px;
+  background:var(--s2);
+  border:2px solid var(--b2);
+  border-radius:6px;
+  overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,.4);
+}
+.hero-photo img{
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center top;
+}
+.hero-photo-placeholder{
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:.65rem;
+  color:var(--mut);text-align:center;
+  padding:1.5rem;
+  background:linear-gradient(135deg,var(--s1),var(--s2));
+  line-height:1.5;
+}
+.hero-info h1{
+  font-family:var(--sans);
+  font-size:clamp(2rem,5vw,3.2rem);
+  font-weight:800;
+  letter-spacing:-.03em;
+  line-height:1.1;
+  margin-bottom:.5rem;
+}
+.hero-info h1 em{color:var(--acc);font-style:normal}
+.hero-degree{
+  font-family:var(--mono);font-size:.82rem;
+  color:var(--txt2);margin-bottom:.2rem;
+}
+.hero-university{
+  font-family:var(--mono);font-size:.72rem;
+  color:var(--mut);margin-bottom:1.5rem;
+}
+.hero-links{
+  display:flex;gap:1rem;flex-wrap:wrap;
+  margin-bottom:1.2rem;
+}
+.hero-links a{
+  font-family:var(--mono);font-size:.65rem;
+  color:var(--txt);text-decoration:none;
+  padding:.5rem 1rem;
+  border:1px solid var(--b2);
+  border-radius:4px;
+  transition:all .3s;
+}
+.hero-links a:hover{
+  border-color:var(--acc);
+  background:var(--acc-dim);
+  color:var(--acc);
+}
+.hero-location{
+  font-family:var(--mono);font-size:.7rem;
+  color:var(--mut);
+}
+
+/* ─── SECTIONS ─── */
+section{
+  padding:5rem 3rem;
+  position:relative;z-index:1;
+  max-width:1300px;
+  margin:0 auto;
+}
+.section-header{
+  display:flex;align-items:center;gap:1.5rem;
+  margin-bottom:3rem;
+  padding-bottom:1rem;
+  border-bottom:1px solid var(--b1);
+}
+.section-num{
+  font-family:var(--mono);font-size:.6rem;
+  color:var(--acc);font-weight:700;
+  padding:.4rem .7rem;
+  border:1px solid var(--acc);
+  border-radius:3px;
+}
+.section-title{
+  font-family:var(--sans);
+  font-size:clamp(1.3rem,3vw,1.8rem);
+  font-weight:700;
+}
+
+/* ─── EXPERIENCE ─── */
+.experience-list{display:flex;flex-direction:column;gap:1.5rem}
+
+.exp-card{
+  background:var(--s1);
+  border:1px solid var(--b1);
+  border-radius:8px;
+  overflow:hidden;
+  transition:border-color .3s;
+}
+.exp-card:hover{border-color:var(--b2)}
+.exp-card.expandable{cursor:pointer}
+.exp-card.expandable:hover{border-color:var(--acc)}
+
+.exp-header{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  gap:1.5rem;
+  padding:1.5rem 1.8rem;
+  align-items:start;
+}
+.exp-logo{
+  width:50px;height:50px;
+  background:var(--s2);
+  border:1px solid var(--b1);
+  border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  overflow:hidden;
+}
+.exp-logo img{
+  width:100%;height:100%;
+  object-fit:contain;
+  padding:6px;
+}
+.exp-logo-placeholder{
+  font-family:var(--mono);font-size:.5rem;
+  color:var(--mut2);text-align:center;
+  line-height:1.2;
+}
+
+.exp-main h3{
+  font-family:var(--sans);font-size:1.1rem;font-weight:700;
+  margin-bottom:.3rem;
+}
+.exp-main h4{
+  font-family:var(--mono);font-size:.72rem;color:var(--acc);
+  margin-bottom:.8rem;
+}
+.exp-main p{
+  font-family:var(--mono);font-size:.68rem;color:var(--txt2);
+  line-height:1.7;
+}
+.exp-bullets{
+  list-style:none;margin-top:.6rem;
+}
+.exp-bullets li{
+  font-family:var(--mono);font-size:.65rem;color:var(--mut);
+  line-height:1.6;padding-left:1rem;position:relative;
+  margin-bottom:.3rem;
+}
+.exp-bullets li::before{content:'→';position:absolute;left:0;color:var(--acc)}
+
+.exp-meta{text-align:right}
+.exp-date{
+  font-family:var(--mono);font-size:.65rem;color:var(--txt2);
+  margin-bottom:.2rem;
+}
+.exp-location{
+  font-family:var(--mono);font-size:.58rem;color:var(--mut);
+}
+.exp-expand-hint{
+  font-family:var(--mono);font-size:.55rem;
+  color:var(--acc);margin-top:.8rem;
+  display:inline-flex;align-items:center;gap:.4rem;
+  padding:.35rem .7rem;
+  border:1px solid var(--acc);
+  border-radius:3px;
+}
+.exp-expand-hint::after{content:'▼';font-size:.45rem;transition:transform .3s}
+.exp-card.expanded .exp-expand-hint::after{transform:rotate(180deg)}
+
+.exp-projects{
+  display:none;
+  background:var(--bg);
+  border-top:1px solid var(--b1);
+  padding:1.5rem 1.8rem;
+}
+.exp-card.expanded .exp-projects{display:block}
+.exp-projects-title{
+  font-family:var(--mono);font-size:.6rem;
+  color:var(--mut);letter-spacing:.12em;
+  text-transform:uppercase;
+  margin-bottom:1.2rem;
+}
+.exp-project{
+  padding:1.2rem;
+  background:var(--s1);
+  border:1px solid var(--b1);
+  border-radius:6px;
+  margin-bottom:.8rem;
+}
+.exp-project:last-child{margin-bottom:0}
+.exp-project h5{
+  font-family:var(--sans);font-size:.95rem;font-weight:600;
+  margin-bottom:.3rem;
+}
+.exp-project .project-type{
+  font-family:var(--mono);font-size:.55rem;color:var(--acc);
+  margin-bottom:.6rem;text-transform:uppercase;letter-spacing:.08em;
+}
+.exp-project p{
+  font-family:var(--mono);font-size:.65rem;color:var(--mut);
+  line-height:1.7;
+}
+
+/* ─── SKILLS ─── */
+.skills-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+  gap:1.2rem;
+}
+.skill-card{
+  background:var(--s1);
+  border:1px solid var(--b1);
+  border-radius:6px;
+  padding:1.5rem;
+  transition:border-color .3s;
+}
+.skill-card:hover{border-color:var(--acc)}
+.skill-label{
+  font-family:var(--mono);font-size:.55rem;
+  color:var(--acc);font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;
+  margin-bottom:1rem;
+  padding-bottom:.6rem;
+  border-bottom:1px solid var(--b1);
+}
+.skill-items{display:flex;flex-wrap:wrap;gap:.4rem}
+.skill-tag{
+  font-family:var(--mono);font-size:.6rem;
+  color:var(--txt2);
+  padding:.35rem .6rem;
+  background:var(--s2);
+  border:1px solid var(--b1);
+  border-radius:3px;
+  transition:all .2s;
+}
+.skill-tag:hover{
+  border-color:var(--acc);
+  background:var(--acc-dim);
+  color:var(--acc);
+}
+
+/* ─── PROJECTS ─── */
+.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+  gap:1.5rem;
+}
+.project-card{
+  background:var(--s1);
+  border:1px solid var(--b1);
+  border-radius:8px;
+  overflow:hidden;
+  transition:border-color .3s;
+}
+.project-card:hover{border-color:var(--acc)}
+
+.project-media{
+  width:100%;
+  aspect-ratio:16/9;
+  background:var(--s2);
+  border-bottom:1px solid var(--b1);
+  overflow:hidden;
+}
+.project-media img,
+.project-media video{
+  width:100%;height:100%;
+  object-fit:cover;
+}
+.project-card.no-media .project-media{display:none}
+
+.project-header{
+  padding:1.2rem 1.5rem;
+  border-bottom:1px solid var(--b1);
+  display:flex;justify-content:space-between;align-items:start;
+  gap:1rem;
+}
+.project-header h3{
+  font-family:var(--sans);font-size:.95rem;font-weight:700;
+  line-height:1.3;
+}
+.project-date{
+  font-family:var(--mono);font-size:.55rem;color:var(--acc);
+  white-space:nowrap;
+}
+.project-body{padding:1.2rem 1.5rem}
+.project-body p{
+  font-family:var(--mono);font-size:.65rem;
+  color:var(--mut);line-height:1.75;
+  margin-bottom:1rem;
+}
+.project-tags{display:flex;flex-wrap:wrap;gap:.35rem}
+.project-tags span{
+  font-family:var(--mono);font-size:.52rem;
+  color:var(--acc);
+  padding:.25rem .55rem;
+  background:var(--acc-dim);
+  border-radius:3px;
+}
+
+/* ─── EDUCATION ─── */
+.education-card{
+  background:var(--s1);
+  border:1px solid var(--b1);
+  border-radius:8px;
+  padding:2rem;
+  max-width:700px;
+}
+.education-card h3{
+  font-family:var(--sans);font-size:1.2rem;font-weight:700;
+  margin-bottom:.3rem;
+}
+.education-card h4{
+  font-family:var(--mono);font-size:.8rem;color:var(--acc);
+  margin-bottom:.2rem;
+}
+.education-card .edu-date{
+  font-family:var(--mono);font-size:.68rem;color:var(--mut);
+  margin-bottom:1.2rem;
+}
+.education-honors{
+  padding:1rem;
+  background:var(--s2);
+  border-radius:5px;
+  margin-bottom:1rem;
+  display:inline-block;
+}
+.education-honors strong{
+  font-family:var(--mono);font-size:.65rem;
+  color:var(--acc);
+}
+.education-honors span{
+  font-family:var(--mono);font-size:.65rem;
+  color:var(--txt2);margin-left:.5rem;
+}
+.education-coursework{
+  font-family:var(--mono);font-size:.65rem;
+  color:var(--mut);line-height:1.7;
+}
+.education-coursework strong{color:var(--txt2)}
+
+/* ─── CONTACT ─── */
+.contact-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:1rem;
+  max-width:700px;
+}
+.contact-link{
+  display:flex;align-items:center;gap:.8rem;
+  font-family:var(--mono);font-size:.7rem;
+  color:var(--txt);text-decoration:none;
+  padding:1rem 1.2rem;
+  background:var(--s1);
+  border:1px solid var(--b1);
+  border-radius:5px;
+  transition:all .3s;
+}
+.contact-link:hover{
+  border-color:var(--acc);
+  background:var(--s2);
+}
+.contact-link span{color:var(--acc)}
+
+/* ─── FOOTER ─── */
+footer{
+  padding:2rem 3rem;
+  border-top:1px solid var(--b1);
+  display:flex;justify-content:space-between;
+  font-family:var(--mono);font-size:.6rem;color:var(--mut);
+  max-width:1300px;margin:0 auto;
+  flex-wrap:wrap;gap:1rem;
+}
+.footer-status{color:var(--acc)}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px){
+  .hero-content{grid-template-columns:1fr;gap:2rem;text-align:center}
+  .hero-photo{margin:0 auto;width:200px;height:240px}
+  .hero-links{justify-content:center}
+  nav{padding:1rem 1.5rem}
+  .nav-links{gap:1.5rem}
+  section{padding:3rem 1.5rem}
+  .exp-header{grid-template-columns:1fr;gap:1rem}
+  .exp-logo{display:none}
+  .exp-meta{text-align:left;display:flex;gap:1rem}
+}
+@media(max-width:600px){
+  .nav-links{display:none}
+  .projects-grid{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:1fr}
+  footer{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+
+<nav>
+  <div class="nav-logo">Hesham Khan</div>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-photo">
+      <!-- REPLACE WITH: <img src="your-photo.jpg" alt="Hesham Khan"> -->
+      <div class="hero-photo-placeholder">Your Photo</div>
+    </div>
+    <div class="hero-info">
+      <h1>Hesham Asim <em>Khan</em></h1>
+      <p class="hero-degree">BASc Mechatronic Systems Engineering</p>
+      <p class="hero-university">Simon Fraser University · Class of 2025</p>
+      <div class="hero-links">
+        <a href="https://linkedin.com/in/hesham-khan" target="_blank">LinkedIn</a>
+        <a href="https://github.com/hesham-khan" target="_blank">GitHub</a>
+        <a href="mailto:heshamasim83@gmail.com">Email</a>
+        <a href="tel:604-787-0919">604-787-0919</a>
+      </div>
+      <p class="hero-location">📍 Toronto, Ontario · Open to Relocation</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EXPERIENCE ═══ -->
+<section id="experience">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2 class="section-title">Professional Experience</h2>
+  </div>
+  
+  <div class="experience-list">
+    <!-- CIMA+ -->
+    <div class="exp-card expandable" onclick="this.classList.toggle('expanded')">
+      <div class="exp-header">
+        <div class="exp-logo">
+          <!-- <img src="cima-logo.png" alt="CIMA+"> -->
+          <span class="exp-logo-placeholder">Logo</span>
+        </div>
+        <div class="exp-main">
+          <h3>Junior Electrical Engineering Professional</h3>
+          <h4>CIMA+</h4>
+          <p>Delivered electrical design packages for industrial, healthcare, and utility facilities. Produced CEC-compliant SLDs, switching schemes, panel schedules, grounding layouts, cable schedules, and load lists.</p>
+          <ul class="exp-bullets">
+            <li>Led full-cycle electrical design of high-voltage capacitor bank station</li>
+            <li>Performed equipment sizing for transformers, breakers, MCCs, and VFDs</li>
+            <li>Coordinated motor control logic with PLC schematics alongside I&C teams</li>
+          </ul>
+          <div class="exp-expand-hint">View Key Projects</div>
+        </div>
+        <div class="exp-meta">
+          <div class="exp-date">Apr 2024 — Sep 2025</div>
+          <div class="exp-location">Vancouver, BC</div>
+        </div>
+      </div>
+      <div class="exp-projects">
+        <div class="exp-projects-title">Notable Projects</div>
+        <div class="exp-project">
+          <h5>High-Voltage Capacitor Bank Station</h5>
+          <div class="project-type">Utility Infrastructure · May 2024 — Jul 2025</div>
+          <p>Led full electrical design of a utility-connected capacitor bank station. Delivered power distribution layouts, control cabling, grounding and bonding systems, protection coordination inputs, and heat trace systems through to issued-for-construction.</p>
+        </div>
+        <div class="exp-project">
+          <h5>Hospital Emergency Power Consolidation</h5>
+          <div class="project-type">Healthcare Infrastructure · Apr 2024 — Jan 2025</div>
+          <p>Performed field audits and produced consolidated as-built SLDs for essential and emergency power distribution systems within acute care facilities. Verified transformer ratings, breaker settings, and distribution configurations.</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Jardeek -->
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-logo">
+          <!-- <img src="jardeek-logo.png" alt="Jardeek"> -->
+          <span class="exp-logo-placeholder">Logo</span>
+        </div>
+        <div class="exp-main">
+          <h3>Software Developer</h3>
+          <h4>Jardeek International FZC</h4>
+          <p>Built a full-stack inventory management dashboard using Java Spring Boot and SQL. Automated manual data entry workflows with Python scripts, reducing processing time by 40%.</p>
+        </div>
+        <div class="exp-meta">
+          <div class="exp-date">May 2025 — Dec 2025</div>
+          <div class="exp-location">Riyadh, SA (Remote)</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- SFU -->
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-logo">
+          <!-- <img src="sfu-logo.png" alt="SFU"> -->
+          <span class="exp-logo-placeholder">Logo</span>
+        </div>
+        <div class="exp-main">
+          <h3>Mechatronics Research Engineer</h3>
+          <h4>Simon Fraser University</h4>
+          <p>Programmed ABB and Fanuc 6-axis robots to deposit conductive ink traces into biomedical splint structures, improving deposition accuracy by 25% through TCP calibration.</p>
+          <ul class="exp-bullets">
+            <li>Designed custom fixtures in SolidWorks with ANSYS FEA validation</li>
+            <li>Reverse-engineered patient arm geometries from 3D scans into CAD</li>
+            <li>Prototyped capacitive sensing circuits, troubleshooting with oscilloscopes</li>
+          </ul>
+        </div>
+        <div class="exp-meta">
+          <div class="exp-date">May 2022 — Aug 2022</div>
+          <div class="exp-location">Surrey, BC</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Automotive -->
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-logo">
+          <span class="exp-logo-placeholder">Logo</span>
+        </div>
+        <div class="exp-main">
+          <h3>Co-Owner / Mechanical Technician</h3>
+          <h4>Automotive Restoration Business</h4>
+          <p>Diagnosed mechanical and electrical faults using root-cause analysis and factory schematics. Fabricated components using lathe, mill, and drill press. Designed custom electrical retrofits.</p>
+        </div>
+        <div class="exp-meta">
+          <div class="exp-date">Apr 2022 — Sep 2025</div>
+          <div class="exp-location">Surrey, BC</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SKILLS ═══ -->
+<section id="skills">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Technical Skills</h2>
+  </div>
+  
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-label">Programming Languages</div>
+      <div class="skill-items">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">C/C++</span>
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">MATLAB</span>
+        <span class="skill-tag">Ladder Logic</span>
+        <span class="skill-tag">Structured Text</span>
+        <span class="skill-tag">G-Code</span>
+      </div>
+    </div>
+    
+    <div class="skill-card">
+      <div class="skill-label">Controls & Embedded</div>
+      <div class="skill-items">
+        <span class="skill-tag">PLC (Allen Bradley)</span>
+        <span class="skill-tag">RSLogix</span>
+        <span class="skill-tag">Arduino</span>
+        <span class="skill-tag">LabVIEW</span>
+        <span class="skill-tag">PID Control</span>
+        <span class="skill-tag">PWM</span>
+        <span class="skill-tag">H-Bridge</span>
+        <span class="skill-tag">DAQ</span>
+      </div>
+    </div>
+    
+    <div class="skill-card">
+      <div class="skill-label">Sensors & Actuators</div>
+      <div class="skill-items">
+        <span class="skill-tag">Encoders</span>
+        <span class="skill-tag">Limit Switches</span>
+        <span class="skill-tag">IR Sensors</span>
+        <span class="skill-tag">Proximity</span>
+        <span class="skill-tag">NEMA Steppers</span>
+        <span class="skill-tag">DC Motors</span>
+        <span class="skill-tag">Servos</span>
+      </div>
+    </div>
+    
+    <div class="skill-card">
+      <div class="skill-label">Electrical Design</div>
+      <div class="skill-items">
+        <span class="skill-tag">Single-Line Diagrams</span>
+        <span class="skill-tag">Panel Schedules</span>
+        <span class="skill-tag">Grounding Layouts</span>
+        <span class="skill-tag">MCC Design</span>
+        <span class="skill-tag">VFD Integration</span>
+        <span class="skill-tag">Protection Coordination</span>
+      </div>
+    </div>
+    
+    <div class="skill-card">
+      <div class="skill-label">Engineering CAD</div>
+      <div class="skill-items">
+        <span class="skill-tag">SolidWorks</span>
+        <span class="skill-tag">AutoCAD</span>
+        <span class="skill-tag">AutoCAD Electrical</span>
+        <span class="skill-tag">Revit MEP</span>
+        <span class="skill-tag">Fusion 360</span>
+        <span class="skill-tag">nTopology</span>
+        <span class="skill-tag">ANSYS</span>
+      </div>
+    </div>
+    
+    <div class="skill-card">
+      <div class="skill-label">3D Printing & Fabrication</div>
+      <div class="skill-items">
+        <span class="skill-tag">FDM Printing</span>
+        <span class="skill-tag">PrusaSlicer</span>
+        <span class="skill-tag">PLA / TPU / PETG</span>
+        <span class="skill-tag">Manual Lathe</span>
+        <span class="skill-tag">Mill</span>
+        <span class="skill-tag">Drill Press</span>
+      </div>
+    </div>
+    
+    <div class="skill-card">
+      <div class="skill-label">Dev Tools & Version Control</div>
+      <div class="skill-items">
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">GitHub</span>
+        <span class="skill-tag">JIRA</span>
+        <span class="skill-tag">VS Code</span>
+        <span class="skill-tag">Simulink</span>
+        <span class="skill-tag">Simscape</span>
+      </div>
+    </div>
+    
+    <div class="skill-card">
+      <div class="skill-label">Industry Software</div>
+      <div class="skill-items">
+        <span class="skill-tag">Bluebeam</span>
+        <span class="skill-tag">Navisworks</span>
+        <span class="skill-tag">BIM 360</span>
+        <span class="skill-tag">AGi32</span>
+        <span class="skill-tag">3D Laser Scanning</span>
+      </div>
+    </div>
+    
+    <div class="skill-card">
+      <div class="skill-label">Protocols & Standards</div>
+      <div class="skill-items">
+        <span class="skill-tag">MQTT</span>
+        <span class="skill-tag">TCP/IP</span>
+        <span class="skill-tag">Modbus</span>
+        <span class="skill-tag">I2C</span>
+        <span class="skill-tag">CEC</span>
+        <span class="skill-tag">CSA</span>
+        <span class="skill-tag">IEEE</span>
+      </div>
+    </div>
+    
+    <div class="skill-card">
+      <div class="skill-label">Test & Diagnostics</div>
+      <div class="skill-items">
+        <span class="skill-tag">Oscilloscope</span>
+        <span class="skill-tag">Multimeter</span>
+        <span class="skill-tag">Logic Analyzer</span>
+        <span class="skill-tag">Root Cause Analysis</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROJECTS ═══ -->
+<section id="projects">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Engineering Projects</h2>
+  </div>
+  
+  <div class="projects-grid">
+    <!-- WITH IMAGE: remove "no-media" class and add <img> inside project-media -->
+    <!-- WITHOUT IMAGE: keep "no-media" class -->
+    
+    <div class="project-card no-media">
+      <div class="project-media">
+        <!-- <img src="pedal-park.jpg" alt="Pedal Park"> -->
+      </div>
+      <div class="project-header">
+        <h3>Pedal Park — Automated 3-Axis Bicycle Storage</h3>
+        <span class="project-date">Jan — Aug 2025</span>
+      </div>
+      <div class="project-body">
+        <p>Designed and built a functional 3-axis automated storage prototype. NEMA stepper motors, TB6600 drivers, lead screw assemblies for XYZ motion. C++ firmware on Arduino Mega with sub-millimeter positioning.</p>
+        <div class="project-tags">
+          <span>C++</span><span>Arduino</span><span>SolidWorks</span><span>ANSYS</span><span>Python</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="project-card no-media">
+      <div class="project-media"></div>
+      <div class="project-header">
+        <h3>Automated Catapult — PID Motor Control</h3>
+        <span class="project-date">May — Aug 2024</span>
+      </div>
+      <div class="project-body">
+        <p>Embedded motor control using H-bridge and PWM for bidirectional DC motor control. Ziegler-Nichols PID tuning achieving 2cm target accuracy.</p>
+        <div class="project-tags">
+          <span>MATLAB</span><span>Simulink</span><span>DC Motors</span><span>PID</span><span>PWM</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="project-card no-media">
+      <div class="project-media"></div>
+      <div class="project-header">
+        <h3>Industrial Sorting Machine</h3>
+        <span class="project-date">Sep — Dec 2023</span>
+      </div>
+      <div class="project-body">
+        <p>LabVIEW-based control integrating 11 sensors and 5 actuators for automated sorting. Fail-safe logic for defect rejection. DAQ for real-time fault logging.</p>
+        <div class="project-tags">
+          <span>LabVIEW</span><span>DAQ</span><span>Industrial Automation</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="project-card no-media">
+      <div class="project-media"></div>
+      <div class="project-header">
+        <h3>CSTR Temperature Automation</h3>
+        <span class="project-date">Nov 2023</span>
+      </div>
+      <div class="project-body">
+        <p>PID control loop in RSLogix for reactor temperature regulation. Safety interlocks for automatic shutdown on sensor failure.</p>
+        <div class="project-tags">
+          <span>Allen Bradley</span><span>RSLogix</span><span>Ladder Logic</span><span>PID</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="project-card no-media">
+      <div class="project-media"></div>
+      <div class="project-header">
+        <h3>Elevator Control — State Machine</h3>
+        <span class="project-date">Academic</span>
+      </div>
+      <div class="project-body">
+        <p>10-state FSM for 4-floor elevator with emergency handling. PLC implementation with sequencing and safety interlocks.</p>
+        <div class="project-tags">
+          <span>PLC</span><span>LogixPro</span><span>State Machine</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="project-card no-media">
+      <div class="project-media"></div>
+      <div class="project-header">
+        <h3>DC Motor Speed Control — 8051</h3>
+        <span class="project-date">Academic</span>
+      </div>
+      <div class="project-body">
+        <p>Closed-loop speed control with PWM and encoder feedback. ±5% accuracy in Embedded C on 8051 MCU.</p>
+        <div class="project-tags">
+          <span>8051 MCU</span><span>PWM</span><span>Embedded C</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="project-card no-media">
+      <div class="project-media"></div>
+      <div class="project-header">
+        <h3>Robot Kinematics — Machine Learning</h3>
+        <span class="project-date">Academic</span>
+      </div>
+      <div class="project-body">
+        <p>6-DOF IRB 120 kinematics with SVR achieving 99.7% R² accuracy. Python with scikit-learn.</p>
+        <div class="project-tags">
+          <span>Python</span><span>ML</span><span>SVR</span><span>Robotics</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="project-card no-media">
+      <div class="project-media"></div>
+      <div class="project-header">
+        <h3>Quarter-Car Suspension Modeling</h3>
+        <span class="project-date">Academic</span>
+      </div>
+      <div class="project-body">
+        <p>MATLAB/Simulink/Simscape modeling with stability in &lt;7s. Spring-damper physical modeling.</p>
+        <div class="project-tags">
+          <span>MATLAB</span><span>Simulink</span><span>Simscape</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="project-card no-media">
+      <div class="project-media"></div>
+      <div class="project-header">
+        <h3>Maze-Solving Robot</h3>
+        <span class="project-date">Academic</span>
+      </div>
+      <div class="project-body">
+        <p>LEGO EV3 with breadth-first and backtracking algorithms for optimal pathfinding.</p>
+        <div class="project-tags">
+          <span>RobotC</span><span>LEGO EV3</span><span>Algorithms</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="project-card no-media">
+      <div class="project-media"></div>
+      <div class="project-header">
+        <h3>CNC G-Code Programming</h3>
+        <span class="project-date">Academic</span>
+      </div>
+      <div class="project-body">
+        <p>Complete CNC program for precision machining with multi-tool sequences and safety protocols.</p>
+        <div class="project-tags">
+          <span>G-Code</span><span>CNC</span><span>CAM</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="project-card no-media">
+      <div class="project-media"></div>
+      <div class="project-header">
+        <h3>Welded Beam Optimization</h3>
+        <span class="project-date">Academic</span>
+      </div>
+      <div class="project-body">
+        <p>Genetic algorithm achieving 89.7% cost reduction while maintaining structural integrity.</p>
+        <div class="project-tags">
+          <span>MATLAB</span><span>Genetic Algorithm</span><span>Optimization</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="project-card no-media">
+      <div class="project-media"></div>
+      <div class="project-header">
+        <h3>Bicycle Frame FEA</h3>
+        <span class="project-date">Academic</span>
+      </div>
+      <div class="project-body">
+        <p>FEA analysis and redesign achieving 33% safety factor increase with weight reduction.</p>
+        <div class="project-tags">
+          <span>SolidWorks</span><span>FEA</span><span>CES EduPack</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="project-card no-media">
+      <div class="project-media"></div>
+      <div class="project-header">
+        <h3>Arduino Security System</h3>
+        <span class="project-date">Academic</span>
+      </div>
+      <div class="project-body">
+        <p>Team-led project (95% grade) with ultrasonic, proximity, and light sensor integration.</p>
+        <div class="project-tags">
+          <span>Arduino</span><span>Multi-Sensor</span><span>Team Lead</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EDUCATION ═══ -->
+<section id="education">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <h2 class="section-title">Education</h2>
+  </div>
+  
+  <div class="education-card">
+    <h3>Simon Fraser University</h3>
+    <h4>Bachelor of Applied Sciences in Mechatronic Systems Engineering</h4>
+    <p class="edu-date">Jan 2021 — Aug 2025 · Surrey, BC</p>
+    
+    <div class="education-honors">
+      <strong>Dean's Honour Roll</strong>
+      <span>Fall 2024</span>
+    </div>
+    
+    <p class="education-coursework">
+      <strong>Relevant Coursework:</strong> Machine Design, Electric Motors & Actuators, Industrial Control Systems, Manufacturing Processes, Feedback Control, Mechanics of Materials, Power Systems, Protection & Coordination, Power Electronics
+    </p>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact">
+  <div class="section-header">
+    <span class="section-num">05</span>
+    <h2 class="section-title">Get in Touch</h2>
+  </div>
+  
+  <div class="contact-grid">
+    <a href="mailto:heshamasim83@gmail.com" class="contact-link">
+      <span>@</span> heshamasim83@gmail.com
+    </a>
+    <a href="tel:604-787-0919" class="contact-link">
+      <span>☎</span> 604-787-0919
+    </a>
+    <a href="https://linkedin.com/in/hesham-khan" target="_blank" class="contact-link">
+      <span>in</span> LinkedIn
+    </a>
+    <a href="https://github.com/hesham-khan" target="_blank" class="contact-link">
+      <span>⌘</span> GitHub
+    </a>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 Hesham Asim Khan</span>
+  <span class="footer-status">Available · EIT (EGBC) in Progress</span>
+</footer>
+
+</body>
+</html>
