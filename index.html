@@ -386,6 +386,102 @@ nav.scrolled {
   animation: pulse 2s infinite;
 }
 
+/* Robot Walker */
+.robot-walker {
+  position: absolute;
+  top: -28px;
+  left: 0;
+  width: 100%;
+  height: 35px;
+  pointer-events: none;
+  overflow: visible;
+}
+.robot-group {
+  position: absolute;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  animation: walkAcross 12s linear infinite;
+}
+.robot-svg {
+  width: 28px;
+  height: 28px;
+}
+.robot-body {
+  fill: var(--accent);
+}
+.robot-eye {
+  fill: #fff;
+}
+.robot-antenna {
+  fill: var(--accent-dark);
+}
+.robot-leg-left {
+  fill: var(--accent-dark);
+  transform-origin: 10px 22px;
+  animation: legLeft 0.3s ease-in-out infinite;
+}
+.robot-leg-right {
+  fill: var(--accent-dark);
+  transform-origin: 18px 22px;
+  animation: legRight 0.3s ease-in-out infinite;
+}
+.robot-arm-left {
+  fill: var(--accent-dark);
+  transform-origin: 6px 14px;
+  animation: armPush 0.6s ease-in-out infinite;
+}
+.robot-arm-right {
+  fill: var(--accent-dark);
+  transform-origin: 22px 14px;
+  animation: armPush 0.6s ease-in-out infinite reverse;
+}
+.robot-sign {
+  background: var(--success);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  box-shadow: 0 2px 10px rgba(16, 185, 129, 0.4);
+  margin-bottom: 4px;
+}
+@keyframes walkAcross {
+  0% { 
+    left: -80px; 
+    transform: scaleX(1);
+  }
+  48% { 
+    left: calc(100% + 10px); 
+    transform: scaleX(1);
+  }
+  50% { 
+    left: calc(100% + 10px); 
+    transform: scaleX(-1);
+  }
+  98% { 
+    left: -80px; 
+    transform: scaleX(-1);
+  }
+  100% { 
+    left: -80px; 
+    transform: scaleX(1);
+  }
+}
+@keyframes legLeft {
+  0%, 100% { transform: rotate(-20deg); }
+  50% { transform: rotate(20deg); }
+}
+@keyframes legRight {
+  0%, 100% { transform: rotate(20deg); }
+  50% { transform: rotate(-20deg); }
+}
+@keyframes armPush {
+  0%, 100% { transform: rotate(-10deg); }
+  50% { transform: rotate(10deg); }
+}
+
 /* ═══════════════════════════════════════════════════════════════════
    SECTIONS
 ═══════════════════════════════════════════════════════════════════ */
@@ -1145,10 +1241,6 @@ footer {
     <div class="hero-image">
       <div class="hero-image-wrapper">
         <img src="hesham-photo.png" alt="Hesham Khan">
-      </div>
-      <div class="hero-status">
-        <span class="status-dot"></span>
-        Available for work
       </div>
     </div>
   </div>
