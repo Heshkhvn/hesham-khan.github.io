@@ -18,14 +18,12 @@
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--txt);font-family:var(--sans);line-height:1.6}
 
-/* Subtle noise */
 body::before{
   content:'';position:fixed;inset:0;
   background:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
   pointer-events:none;z-index:9999;
 }
 
-/* Grid bg */
 .grid-bg{
   position:fixed;inset:0;z-index:0;
   background-image:
@@ -35,7 +33,6 @@ body::before{
   pointer-events:none;
 }
 
-/* ─── NAV ─── */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
   display:flex;justify-content:space-between;align-items:center;
@@ -58,7 +55,6 @@ nav{
 }
 .nav-links a:hover{color:var(--acc)}
 
-/* ─── HERO ─── */
 .hero{
   min-height:100vh;
   display:flex;align-items:center;
@@ -85,15 +81,6 @@ nav{
   width:100%;height:100%;
   object-fit:cover;
   object-position:center top;
-}
-.hero-photo-placeholder{
-  width:100%;height:100%;
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--mono);font-size:.65rem;
-  color:var(--mut);text-align:center;
-  padding:1.5rem;
-  background:linear-gradient(135deg,var(--s1),var(--s2));
-  line-height:1.5;
 }
 .hero-info h1{
   font-family:var(--sans);
@@ -134,7 +121,6 @@ nav{
   color:var(--mut);
 }
 
-/* ─── SECTIONS ─── */
 section{
   padding:5rem 3rem;
   position:relative;z-index:1;
@@ -160,7 +146,48 @@ section{
   font-weight:700;
 }
 
-/* ─── EXPERIENCE ─── */
+/* Education */
+.education-card{
+  background:var(--s1);
+  border:1px solid var(--b1);
+  border-radius:8px;
+  padding:2rem;
+  max-width:700px;
+}
+.education-card h3{
+  font-family:var(--sans);font-size:1.2rem;font-weight:700;
+  margin-bottom:.3rem;
+}
+.education-card h4{
+  font-family:var(--mono);font-size:.8rem;color:var(--acc);
+  margin-bottom:.2rem;
+}
+.education-card .edu-date{
+  font-family:var(--mono);font-size:.68rem;color:var(--mut);
+  margin-bottom:1.2rem;
+}
+.education-honors{
+  padding:1rem;
+  background:var(--s2);
+  border-radius:5px;
+  margin-bottom:1rem;
+  display:inline-block;
+}
+.education-honors strong{
+  font-family:var(--mono);font-size:.65rem;
+  color:var(--acc);
+}
+.education-honors span{
+  font-family:var(--mono);font-size:.65rem;
+  color:var(--txt2);margin-left:.5rem;
+}
+.education-coursework{
+  font-family:var(--mono);font-size:.65rem;
+  color:var(--mut);line-height:1.7;
+}
+.education-coursework strong{color:var(--txt2)}
+
+/* Experience */
 .experience-list{display:flex;flex-direction:column;gap:1.5rem}
 
 .exp-card{
@@ -181,6 +208,9 @@ section{
   padding:1.5rem 1.8rem;
   align-items:start;
 }
+.exp-header.no-logo{
+  grid-template-columns:1fr auto;
+}
 .exp-logo{
   width:50px;height:50px;
   background:var(--s2);
@@ -193,12 +223,7 @@ section{
 .exp-logo img{
   width:100%;height:100%;
   object-fit:contain;
-  padding:6px;
-}
-.exp-logo-placeholder{
-  font-family:var(--mono);font-size:.5rem;
-  color:var(--mut2);text-align:center;
-  line-height:1.2;
+  padding:4px;
 }
 
 .exp-main h3{
@@ -217,9 +242,9 @@ section{
   list-style:none;margin-top:.6rem;
 }
 .exp-bullets li{
-  font-family:var(--mono);font-size:.65rem;color:var(--mut);
-  line-height:1.6;padding-left:1rem;position:relative;
-  margin-bottom:.3rem;
+  font-family:var(--mono);font-size:.62rem;color:var(--mut);
+  line-height:1.65;padding-left:1rem;position:relative;
+  margin-bottom:.4rem;
 }
 .exp-bullets li::before{content:'→';position:absolute;left:0;color:var(--acc)}
 
@@ -272,11 +297,11 @@ section{
   margin-bottom:.6rem;text-transform:uppercase;letter-spacing:.08em;
 }
 .exp-project p{
-  font-family:var(--mono);font-size:.65rem;color:var(--mut);
+  font-family:var(--mono);font-size:.62rem;color:var(--mut);
   line-height:1.7;
 }
 
-/* ─── SKILLS ─── */
+/* Skills */
 .skills-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
@@ -314,7 +339,7 @@ section{
   color:var(--acc);
 }
 
-/* ─── PROJECTS ─── */
+/* Projects */
 .projects-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
@@ -359,10 +384,19 @@ section{
 }
 .project-body{padding:1.2rem 1.5rem}
 .project-body p{
-  font-family:var(--mono);font-size:.65rem;
-  color:var(--mut);line-height:1.75;
-  margin-bottom:1rem;
+  font-family:var(--mono);font-size:.62rem;
+  color:var(--mut);line-height:1.7;
+  margin-bottom:.8rem;
 }
+.project-bullets{
+  list-style:none;margin-bottom:1rem;
+}
+.project-bullets li{
+  font-family:var(--mono);font-size:.6rem;color:var(--mut);
+  line-height:1.65;padding-left:1rem;position:relative;
+  margin-bottom:.35rem;
+}
+.project-bullets li::before{content:'→';position:absolute;left:0;color:var(--acc)}
 .project-tags{display:flex;flex-wrap:wrap;gap:.35rem}
 .project-tags span{
   font-family:var(--mono);font-size:.52rem;
@@ -372,53 +406,12 @@ section{
   border-radius:3px;
 }
 
-/* ─── EDUCATION ─── */
-.education-card{
-  background:var(--s1);
-  border:1px solid var(--b1);
-  border-radius:8px;
-  padding:2rem;
-  max-width:700px;
-}
-.education-card h3{
-  font-family:var(--sans);font-size:1.2rem;font-weight:700;
-  margin-bottom:.3rem;
-}
-.education-card h4{
-  font-family:var(--mono);font-size:.8rem;color:var(--acc);
-  margin-bottom:.2rem;
-}
-.education-card .edu-date{
-  font-family:var(--mono);font-size:.68rem;color:var(--mut);
-  margin-bottom:1.2rem;
-}
-.education-honors{
-  padding:1rem;
-  background:var(--s2);
-  border-radius:5px;
-  margin-bottom:1rem;
-  display:inline-block;
-}
-.education-honors strong{
-  font-family:var(--mono);font-size:.65rem;
-  color:var(--acc);
-}
-.education-honors span{
-  font-family:var(--mono);font-size:.65rem;
-  color:var(--txt2);margin-left:.5rem;
-}
-.education-coursework{
-  font-family:var(--mono);font-size:.65rem;
-  color:var(--mut);line-height:1.7;
-}
-.education-coursework strong{color:var(--txt2)}
-
-/* ─── CONTACT ─── */
+/* Contact */
 .contact-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:1rem;
-  max-width:700px;
+  max-width:500px;
 }
 .contact-link{
   display:flex;align-items:center;gap:.8rem;
@@ -436,7 +429,6 @@ section{
 }
 .contact-link span{color:var(--acc)}
 
-/* ─── FOOTER ─── */
 footer{
   padding:2rem 3rem;
   border-top:1px solid var(--b1);
@@ -447,7 +439,6 @@ footer{
 }
 .footer-status{color:var(--acc)}
 
-/* ─── RESPONSIVE ─── */
 @media(max-width:900px){
   .hero-content{grid-template-columns:1fr;gap:2rem;text-align:center}
   .hero-photo{margin:0 auto;width:200px;height:240px}
@@ -474,10 +465,10 @@ footer{
 <nav>
   <div class="nav-logo">Hesham Khan</div>
   <ul class="nav-links">
+    <li><a href="#education">Education</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
-    <li><a href="#education">Education</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -486,8 +477,7 @@ footer{
 <section class="hero" id="home">
   <div class="hero-content">
     <div class="hero-photo">
-      <!-- REPLACE WITH: <img src="your-photo.jpg" alt="Hesham Khan"> -->
-      <div class="hero-photo-placeholder">Your Photo</div>
+      <img src="hesham-photo.jpg" alt="Hesham Khan">
     </div>
     <div class="hero-info">
       <h1>Hesham Asim <em>Khan</em></h1>
@@ -495,19 +485,40 @@ footer{
       <p class="hero-university">Simon Fraser University · Class of 2025</p>
       <div class="hero-links">
         <a href="https://linkedin.com/in/hesham-khan" target="_blank">LinkedIn</a>
-        <a href="https://github.com/hesham-khan" target="_blank">GitHub</a>
         <a href="mailto:heshamasim83@gmail.com">Email</a>
-        <a href="tel:604-787-0919">604-787-0919</a>
       </div>
       <p class="hero-location">📍 Toronto, Ontario · Open to Relocation</p>
     </div>
   </div>
 </section>
 
+<!-- ═══ EDUCATION ═══ -->
+<section id="education">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2 class="section-title">Education</h2>
+  </div>
+  
+  <div class="education-card">
+    <h3>Simon Fraser University</h3>
+    <h4>Bachelor of Applied Sciences in Mechatronic Systems Engineering</h4>
+    <p class="edu-date">Jan 2021 — Aug 2025 · Surrey, BC</p>
+    
+    <div class="education-honors">
+      <strong>Dean's Honour Roll</strong>
+      <span>Fall 2024</span>
+    </div>
+    
+    <p class="education-coursework">
+      <strong>Relevant Coursework:</strong> Machine Design, Electric Motors & Actuators, Industrial Control Systems, Manufacturing Processes, Feedback Control, Mechanics of Materials, Power Systems, Protection & Coordination, Power Electronics
+    </p>
+  </div>
+</section>
+
 <!-- ═══ EXPERIENCE ═══ -->
 <section id="experience">
   <div class="section-header">
-    <span class="section-num">01</span>
+    <span class="section-num">02</span>
     <h2 class="section-title">Professional Experience</h2>
   </div>
   
@@ -516,17 +527,24 @@ footer{
     <div class="exp-card expandable" onclick="this.classList.toggle('expanded')">
       <div class="exp-header">
         <div class="exp-logo">
-          <!-- <img src="cima-logo.png" alt="CIMA+"> -->
-          <span class="exp-logo-placeholder">Logo</span>
+          <img src="cima-logo.png" alt="CIMA+">
         </div>
         <div class="exp-main">
           <h3>Junior Electrical Engineering Professional</h3>
           <h4>CIMA+</h4>
-          <p>Delivered electrical design packages for industrial, healthcare, and utility facilities. Produced CEC-compliant SLDs, switching schemes, panel schedules, grounding layouts, cable schedules, and load lists.</p>
           <ul class="exp-bullets">
-            <li>Led full-cycle electrical design of high-voltage capacitor bank station</li>
-            <li>Performed equipment sizing for transformers, breakers, MCCs, and VFDs</li>
-            <li>Coordinated motor control logic with PLC schematics alongside I&C teams</li>
+            <li>Designed electrical packages for industrial facilities using AutoCAD and Revit, delivering 100% compliance with tender specifications across multiple project phases</li>
+            <li>Collected on-site Arc Flash data including breaker settings and transformer ratings, enabling accurate power system studies and safety analysis for facility upgrades</li>
+            <li>Coordinated with I&C teams to align Motor Control Schedules with PLC schematics, identifying integration conflicts early and ensuring seamless power-control logic</li>
+            <li>Resolved multi-disciplinary clashes using Bluebeam and BIM 360, reducing construction RFIs by flagging routing conflicts before they reached the field</li>
+            <li>Reviewed Shop Drawings and issued Site Instructions within 48-hour turnarounds, keeping project timelines on track during construction phases</li>
+            <li>Performed 3D laser scanning and site audits to generate accurate as-built models, verifying cable tray routing against design intent</li>
+            <li>Drafted Single-Line Diagrams, panel schedules, and grounding layouts to optimize load distribution and improve system reliability</li>
+            <li>Partnered with Project Managers on Technical Bid Evaluations, analyzing vendor quotes against design specs to ensure accurate project costing</li>
+            <li>Authored Equipment Datasheets, Specifications, and Material Requisitions, ensuring all procured components met CEC and utility safety requirements</li>
+            <li>Delivered Electric Heat Trace Design and Area Classification Drawings for hazardous locations, validating circuit lengths and protection settings against code</li>
+            <li>Compiled Construction Work Packages including Wiring Diagrams, Cable Schedules, and Load Lists, streamlining contractor installation and reducing field queries</li>
+            <li>Conducted lighting calculations using AGi32, generating optimized layouts that met IES illumination standards for industrial workspaces</li>
           </ul>
           <div class="exp-expand-hint">View Key Projects</div>
         </div>
@@ -540,27 +558,29 @@ footer{
         <div class="exp-project">
           <h5>High-Voltage Capacitor Bank Station</h5>
           <div class="project-type">Utility Infrastructure · May 2024 — Jul 2025</div>
-          <p>Led full electrical design of a utility-connected capacitor bank station. Delivered power distribution layouts, control cabling, grounding and bonding systems, protection coordination inputs, and heat trace systems through to issued-for-construction.</p>
+          <p>Led full electrical design of a utility-connected capacitor bank station. Delivered power distribution layouts, control cabling, grounding and bonding systems, protection coordination inputs, and heat trace systems through to issued-for-construction. Designed interior and exterior lighting systems using AGi32 studies.</p>
         </div>
         <div class="exp-project">
           <h5>Hospital Emergency Power Consolidation</h5>
           <div class="project-type">Healthcare Infrastructure · Apr 2024 — Jan 2025</div>
-          <p>Performed field audits and produced consolidated as-built SLDs for essential and emergency power distribution systems within acute care facilities. Verified transformer ratings, breaker settings, and distribution configurations.</p>
+          <p>Performed field audits and produced consolidated as-built SLDs for essential and emergency power distribution systems within acute care facilities. Verified transformer ratings, breaker settings, and distribution configurations to ensure code compliance and life-safety system continuity.</p>
         </div>
       </div>
     </div>
     
     <!-- Jardeek -->
     <div class="exp-card">
-      <div class="exp-header">
-        <div class="exp-logo">
-          <!-- <img src="jardeek-logo.png" alt="Jardeek"> -->
-          <span class="exp-logo-placeholder">Logo</span>
-        </div>
+      <div class="exp-header no-logo">
         <div class="exp-main">
           <h3>Software Developer</h3>
           <h4>Jardeek International FZC</h4>
-          <p>Built a full-stack inventory management dashboard using Java Spring Boot and SQL. Automated manual data entry workflows with Python scripts, reducing processing time by 40%.</p>
+          <ul class="exp-bullets">
+            <li>Built a full-stack inventory dashboard using Java Spring Boot and React, giving warehouse staff real-time visibility into stock levels across multiple locations</li>
+            <li>Deployed backend services and database resources on AWS (EC2, RDS), ensuring reliable access for remote team members across different time zones</li>
+            <li>Wrote Python scripts to automate manual data entry tasks, parsing Excel sheets and updating the database — reducing processing time by 40%</li>
+            <li>Set up CI/CD pipelines using Docker and GitHub Actions, enabling faster feature releases and streamlined bug fixes with minimal downtime</li>
+            <li>Created RESTful API endpoints that allowed internal teams to query product availability and shipment status directly from their existing tools</li>
+          </ul>
         </div>
         <div class="exp-meta">
           <div class="exp-date">May 2025 — Dec 2025</div>
@@ -573,17 +593,19 @@ footer{
     <div class="exp-card">
       <div class="exp-header">
         <div class="exp-logo">
-          <!-- <img src="sfu-logo.png" alt="SFU"> -->
-          <span class="exp-logo-placeholder">Logo</span>
+          <img src="sfu-logo.png" alt="SFU">
         </div>
         <div class="exp-main">
           <h3>Mechatronics Research Engineer</h3>
           <h4>Simon Fraser University</h4>
-          <p>Programmed ABB and Fanuc 6-axis robots to deposit conductive ink traces into biomedical splint structures, improving deposition accuracy by 25% through TCP calibration.</p>
           <ul class="exp-bullets">
-            <li>Designed custom fixtures in SolidWorks with ANSYS FEA validation</li>
-            <li>Reverse-engineered patient arm geometries from 3D scans into CAD</li>
-            <li>Prototyped capacitive sensing circuits, troubleshooting with oscilloscopes</li>
+            <li>Programmed and calibrated a dual-robot cell (ABB & Fanuc), adjusting Tool Center Point parameters and kinematic trajectories to improve material deposition accuracy by 25%</li>
+            <li>Used 3D laser scanning (EinScan Pro HD) to reverse-engineer patient-specific geometries into SolidWorks models, accelerating the design iteration loop for additive manufacturing</li>
+            <li>Modeled end-effector geometries and splints in SolidWorks, running ANSYS simulations to optimize for weight reduction while maintaining structural stiffness</li>
+            <li>Prototyped and 3D printed capacitive touch sensors for pressure mapping, applying iterative root-cause analysis to resolve signal noise and improve data reliability</li>
+            <li>Maintained design verification logs and assembly notes during prototype testing, ensuring full traceability and adherence to QA protocols for manufacturing scaling</li>
+            <li>Performed root-cause analysis on failed prints and electromechanical misalignments, debugging hardware integration issues to improve system consistency</li>
+            <li>Designed custom mechanical fixtures and analyzed time-study data to redesign workflows, reducing cycle time and improving throughput</li>
           </ul>
         </div>
         <div class="exp-meta">
@@ -595,14 +617,19 @@ footer{
     
     <!-- Automotive -->
     <div class="exp-card">
-      <div class="exp-header">
-        <div class="exp-logo">
-          <span class="exp-logo-placeholder">Logo</span>
-        </div>
+      <div class="exp-header no-logo">
         <div class="exp-main">
           <h3>Co-Owner / Mechanical Technician</h3>
           <h4>Automotive Restoration Business</h4>
-          <p>Diagnosed mechanical and electrical faults using root-cause analysis and factory schematics. Fabricated components using lathe, mill, and drill press. Designed custom electrical retrofits.</p>
+          <ul class="exp-bullets">
+            <li>Managed the full buy-fix-sell lifecycle — from sourcing salvage vehicles and running pre-purchase inspections to controlling reconditioning budgets and hitting profit targets</li>
+            <li>Performed body restoration work including stud welding for dent repair and precision panel alignment, restoring exterior geometry to OEM standards</li>
+            <li>Diagnosed complex intermittent electrical faults in wiring harnesses by tracing factory schematics, restoring function to instrument clusters, sensors, and modules</li>
+            <li>Completed mechanical repairs required for safety certification, including suspension work, brake service, and replacement of damaged structural components</li>
+            <li>Handled full refinishing using HVLP spray equipment — from surface prep and priming through to final clear coat application</li>
+            <li>Fabricated custom interior electronics including fiber-optic starlight headliners and ambient lighting systems, ensuring safe wire routing and proper circuit integration</li>
+            <li>Performed deep cosmetic restoration with full interior disassembly and exterior paint correction, delivering showroom-quality presentation for resale</li>
+          </ul>
         </div>
         <div class="exp-meta">
           <div class="exp-date">Apr 2022 — Sep 2025</div>
@@ -616,7 +643,7 @@ footer{
 <!-- ═══ SKILLS ═══ -->
 <section id="skills">
   <div class="section-header">
-    <span class="section-num">02</span>
+    <span class="section-num">03</span>
     <h2 class="section-title">Technical Skills</h2>
   </div>
   
@@ -627,6 +654,7 @@ footer{
         <span class="skill-tag">Python</span>
         <span class="skill-tag">C/C++</span>
         <span class="skill-tag">Java</span>
+        <span class="skill-tag">C#</span>
         <span class="skill-tag">SQL</span>
         <span class="skill-tag">MATLAB</span>
         <span class="skill-tag">Ladder Logic</span>
@@ -641,11 +669,13 @@ footer{
         <span class="skill-tag">PLC (Allen Bradley)</span>
         <span class="skill-tag">RSLogix</span>
         <span class="skill-tag">Arduino</span>
+        <span class="skill-tag">8051 MCU</span>
         <span class="skill-tag">LabVIEW</span>
         <span class="skill-tag">PID Control</span>
         <span class="skill-tag">PWM</span>
         <span class="skill-tag">H-Bridge</span>
         <span class="skill-tag">DAQ</span>
+        <span class="skill-tag">MQTT</span>
       </div>
     </div>
     
@@ -656,6 +686,8 @@ footer{
         <span class="skill-tag">Limit Switches</span>
         <span class="skill-tag">IR Sensors</span>
         <span class="skill-tag">Proximity</span>
+        <span class="skill-tag">Capacitive</span>
+        <span class="skill-tag">Inductive</span>
         <span class="skill-tag">NEMA Steppers</span>
         <span class="skill-tag">DC Motors</span>
         <span class="skill-tag">Servos</span>
@@ -671,6 +703,8 @@ footer{
         <span class="skill-tag">MCC Design</span>
         <span class="skill-tag">VFD Integration</span>
         <span class="skill-tag">Protection Coordination</span>
+        <span class="skill-tag">Arc Flash Studies</span>
+        <span class="skill-tag">Heat Trace Design</span>
       </div>
     </div>
     
@@ -696,6 +730,21 @@ footer{
         <span class="skill-tag">Manual Lathe</span>
         <span class="skill-tag">Mill</span>
         <span class="skill-tag">Drill Press</span>
+        <span class="skill-tag">HVLP Spray</span>
+      </div>
+    </div>
+    
+    <div class="skill-card">
+      <div class="skill-label">Software Development</div>
+      <div class="skill-items">
+        <span class="skill-tag">Spring Boot</span>
+        <span class="skill-tag">React</span>
+        <span class="skill-tag">.NET / WinForms</span>
+        <span class="skill-tag">REST APIs</span>
+        <span class="skill-tag">SQL Server</span>
+        <span class="skill-tag">AWS (EC2, RDS)</span>
+        <span class="skill-tag">Docker</span>
+        <span class="skill-tag">CI/CD</span>
       </div>
     </div>
     
@@ -704,6 +753,7 @@ footer{
       <div class="skill-items">
         <span class="skill-tag">Git</span>
         <span class="skill-tag">GitHub</span>
+        <span class="skill-tag">GitHub Actions</span>
         <span class="skill-tag">JIRA</span>
         <span class="skill-tag">VS Code</span>
         <span class="skill-tag">Simulink</span>
@@ -719,6 +769,7 @@ footer{
         <span class="skill-tag">BIM 360</span>
         <span class="skill-tag">AGi32</span>
         <span class="skill-tag">3D Laser Scanning</span>
+        <span class="skill-tag">EinScan Pro HD</span>
       </div>
     </div>
     
@@ -734,46 +785,60 @@ footer{
         <span class="skill-tag">IEEE</span>
       </div>
     </div>
-    
-    <div class="skill-card">
-      <div class="skill-label">Test & Diagnostics</div>
-      <div class="skill-items">
-        <span class="skill-tag">Oscilloscope</span>
-        <span class="skill-tag">Multimeter</span>
-        <span class="skill-tag">Logic Analyzer</span>
-        <span class="skill-tag">Root Cause Analysis</span>
-      </div>
-    </div>
   </div>
 </section>
 
 <!-- ═══ PROJECTS ═══ -->
 <section id="projects">
   <div class="section-header">
-    <span class="section-num">03</span>
+    <span class="section-num">04</span>
     <h2 class="section-title">Engineering Projects</h2>
   </div>
   
   <div class="projects-grid">
-    <!-- WITH IMAGE: remove "no-media" class and add <img> inside project-media -->
-    <!-- WITHOUT IMAGE: keep "no-media" class -->
     
+    <!-- PLC MQTT Pipeline - NEW -->
     <div class="project-card no-media">
-      <div class="project-media">
-        <!-- <img src="pedal-park.jpg" alt="Pedal Park"> -->
+      <div class="project-media"></div>
+      <div class="project-header">
+        <h3>PLC → MQTT → SQL Server Data Pipeline</h3>
+        <span class="project-date">2025</span>
       </div>
+      <div class="project-body">
+        <ul class="project-bullets">
+          <li>Built an end-to-end manufacturing data pipeline connecting a simulated PLC to MQTT broker, C# ingestion layer, SQL Server logging, and live WinForms dashboard</li>
+          <li>Simulated real machine events (e.g., "Welder_1:FAULT:Overheat") using Mosquitto CLI, subscribing to topics and processing messages asynchronously with async/await</li>
+          <li>Logged all incoming events to SQL Server using parameterized queries, implementing proper indexing for fast retrieval of latest machine states</li>
+          <li>Handled reliability concerns including QoS settings, message buffering, and retry logic to ensure no data loss during network interruptions</li>
+          <li>Prevented UI blocking during database and network calls by offloading work to background threads, keeping the dashboard responsive under load</li>
+        </ul>
+        <div class="project-tags">
+          <span>C#</span><span>.NET</span><span>MQTT</span><span>SQL Server</span><span>WinForms</span><span>PLC</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Pedal Park -->
+    <div class="project-card no-media">
+      <div class="project-media"></div>
       <div class="project-header">
         <h3>Pedal Park — Automated 3-Axis Bicycle Storage</h3>
         <span class="project-date">Jan — Aug 2025</span>
       </div>
       <div class="project-body">
-        <p>Designed and built a functional 3-axis automated storage prototype. NEMA stepper motors, TB6600 drivers, lead screw assemblies for XYZ motion. C++ firmware on Arduino Mega with sub-millimeter positioning.</p>
+        <ul class="project-bullets">
+          <li>Designed and built a functional 3-axis automated storage prototype using NEMA stepper motors, TB6600 drivers, and lead screw assemblies for XYZ motion</li>
+          <li>Wrote C++ firmware on Arduino Mega integrating IR sensors and limit switches for automated slot detection, homing routines, and sub-millimeter positioning</li>
+          <li>Designed the electrical control panel wiring, validated circuits using oscilloscopes and logic analyzers, and built a Python GUI for real-time monitoring</li>
+          <li>Ran structural FEA in ANSYS and conducted formal design reviews, tracking iterations in JIRA through prototype build and validation</li>
+        </ul>
         <div class="project-tags">
           <span>C++</span><span>Arduino</span><span>SolidWorks</span><span>ANSYS</span><span>Python</span>
         </div>
       </div>
     </div>
     
+    <!-- Catapult -->
     <div class="project-card no-media">
       <div class="project-media"></div>
       <div class="project-header">
@@ -781,13 +846,18 @@ footer{
         <span class="project-date">May — Aug 2024</span>
       </div>
       <div class="project-body">
-        <p>Embedded motor control using H-bridge and PWM for bidirectional DC motor control. Ziegler-Nichols PID tuning achieving 2cm target accuracy.</p>
+        <ul class="project-bullets">
+          <li>Built an embedded motor control system using H-bridge circuitry and PWM for precise bidirectional DC motor control</li>
+          <li>Applied Ziegler-Nichols PID tuning to reduce settling time and overshoot, achieving 2cm target accuracy with consistent throw trajectories</li>
+          <li>Tested under dynamic load conditions, iterating on control parameters until repeatable performance was achieved</li>
+        </ul>
         <div class="project-tags">
           <span>MATLAB</span><span>Simulink</span><span>DC Motors</span><span>PID</span><span>PWM</span>
         </div>
       </div>
     </div>
     
+    <!-- Industrial Sorting -->
     <div class="project-card no-media">
       <div class="project-media"></div>
       <div class="project-header">
@@ -795,13 +865,20 @@ footer{
         <span class="project-date">Sep — Dec 2023</span>
       </div>
       <div class="project-body">
-        <p>LabVIEW-based control integrating 11 sensors and 5 actuators for automated sorting. Fail-safe logic for defect rejection. DAQ for real-time fault logging.</p>
+        <ul class="project-bullets">
+          <li>Built a LabVIEW-based control system for an industrial assembly trainer, integrating 11 sensors and 5 actuators to automate sorting, assembly, and quality control</li>
+          <li>Implemented real-time material classification using inductive, capacitive, infrared, and through-beam sensors to distinguish plastic, metal, and completed assemblies</li>
+          <li>Programmed modular subroutines for solenoids and conveyor motors, supporting part queuing, hopper management, and failure detection</li>
+          <li>Added pause/resume and recovery features with persistent CSV logging, assembly status arrays, and an interactive front panel for emergency stop</li>
+          <li>Optimized system performance through efficiency tracking, achieving accurate rejection decisions under real-time conditions with live sensor feedback</li>
+        </ul>
         <div class="project-tags">
-          <span>LabVIEW</span><span>DAQ</span><span>Industrial Automation</span>
+          <span>LabVIEW</span><span>DAQ</span><span>Industrial Automation</span><span>Multi-Sensor</span>
         </div>
       </div>
     </div>
     
+    <!-- CSTR -->
     <div class="project-card no-media">
       <div class="project-media"></div>
       <div class="project-header">
@@ -809,13 +886,17 @@ footer{
         <span class="project-date">Nov 2023</span>
       </div>
       <div class="project-body">
-        <p>PID control loop in RSLogix for reactor temperature regulation. Safety interlocks for automatic shutdown on sensor failure.</p>
+        <ul class="project-bullets">
+          <li>Designed a PID control loop in RSLogix to regulate reactor temperature within tight tolerance bands</li>
+          <li>Programmed safety interlocks to detect sensor failures and trigger automatic shutdown, preventing unsafe operating conditions</li>
+        </ul>
         <div class="project-tags">
           <span>Allen Bradley</span><span>RSLogix</span><span>Ladder Logic</span><span>PID</span>
         </div>
       </div>
     </div>
     
+    <!-- Elevator -->
     <div class="project-card no-media">
       <div class="project-media"></div>
       <div class="project-header">
@@ -823,41 +904,40 @@ footer{
         <span class="project-date">Academic</span>
       </div>
       <div class="project-body">
-        <p>10-state FSM for 4-floor elevator with emergency handling. PLC implementation with sequencing and safety interlocks.</p>
+        <ul class="project-bullets">
+          <li>Designed a 10-state finite state machine for a 4-floor elevator simulation, handling request prioritization, emergency scenarios, and multi-mode operation</li>
+          <li>Built safety protocols including emergency stop, door interlocks, directional request prioritization, and automatic ground floor return on idle timeout</li>
+          <li>Implemented Normal, Maintenance, and Out-of-Service modes with intelligent state transitions and memory retention during emergency events</li>
+          <li>Created user interface feedback with floor indicators, button latching, timer-based door hold (5s), and idle timeout (10s) for realistic operation</li>
+        </ul>
         <div class="project-tags">
-          <span>PLC</span><span>LogixPro</span><span>State Machine</span>
+          <span>PLC</span><span>LogixPro</span><span>State Machine</span><span>Ladder Logic</span>
         </div>
       </div>
     </div>
     
+    <!-- DC Fan -->
     <div class="project-card no-media">
       <div class="project-media"></div>
       <div class="project-header">
-        <h3>DC Motor Speed Control — 8051</h3>
+        <h3>DC Fan Speed Control — 8051 MCU</h3>
         <span class="project-date">Academic</span>
       </div>
       <div class="project-body">
-        <p>Closed-loop speed control with PWM and encoder feedback. ±5% accuracy in Embedded C on 8051 MCU.</p>
+        <ul class="project-bullets">
+          <li>Built a closed-loop speed control system for a brushless DC fan using an 8051 MCU, reading encoder feedback and adjusting PWM output to match DIP switch setpoint</li>
+          <li>Designed the MOSFET driver circuit to interface the MCU's PWM signal with the fan motor, handling proper switching and flyback protection</li>
+          <li>Displayed real-time fan speed on three 7-segment displays, multiplexing the outputs to show RPM readings from the encoder signal</li>
+          <li>Implemented a proportional controller that compared actual speed against setpoint and adjusted duty cycle to minimize steady-state error</li>
+          <li>Programmed in Embedded C using Keil µVision IDE, flashing firmware to the MikronBoard and validating performance across the full speed range</li>
+        </ul>
         <div class="project-tags">
-          <span>8051 MCU</span><span>PWM</span><span>Embedded C</span>
+          <span>8051 MCU</span><span>PWM</span><span>Embedded C</span><span>Encoder</span><span>MOSFET</span>
         </div>
       </div>
     </div>
     
-    <div class="project-card no-media">
-      <div class="project-media"></div>
-      <div class="project-header">
-        <h3>Robot Kinematics — Machine Learning</h3>
-        <span class="project-date">Academic</span>
-      </div>
-      <div class="project-body">
-        <p>6-DOF IRB 120 kinematics with SVR achieving 99.7% R² accuracy. Python with scikit-learn.</p>
-        <div class="project-tags">
-          <span>Python</span><span>ML</span><span>SVR</span><span>Robotics</span>
-        </div>
-      </div>
-    </div>
-    
+    <!-- Quarter Car -->
     <div class="project-card no-media">
       <div class="project-media"></div>
       <div class="project-header">
@@ -865,13 +945,19 @@ footer{
         <span class="project-date">Academic</span>
       </div>
       <div class="project-body">
-        <p>MATLAB/Simulink/Simscape modeling with stability in &lt;7s. Spring-damper physical modeling.</p>
+        <ul class="project-bullets">
+          <li>Modeled a 4th-order quarter-car suspension system using Newton's second law, deriving transfer functions and state-space representations from force balance equations</li>
+          <li>Simulated system response in MATLAB, Simulink, and Simscape under impulse, sinusoidal, and custom road profile inputs to validate model accuracy</li>
+          <li>Analyzed suspension behavior using bond graphs and linear graphs, simulating scenarios like speed bumps to assess stability and ride comfort</li>
+          <li>Achieved stability in under 7 seconds with ride comfort maintained across dynamic load conditions</li>
+        </ul>
         <div class="project-tags">
-          <span>MATLAB</span><span>Simulink</span><span>Simscape</span>
+          <span>MATLAB</span><span>Simulink</span><span>Simscape</span><span>Dynamics</span>
         </div>
       </div>
     </div>
     
+    <!-- Maze Robot -->
     <div class="project-card no-media">
       <div class="project-media"></div>
       <div class="project-header">
@@ -879,13 +965,18 @@ footer{
         <span class="project-date">Academic</span>
       </div>
       <div class="project-body">
-        <p>LEGO EV3 with breadth-first and backtracking algorithms for optimal pathfinding.</p>
+        <ul class="project-bullets">
+          <li>Programmed a LEGO EV3 robot using RobotC to navigate and solve mazes autonomously using breadth-first search and backtracking algorithms</li>
+          <li>Integrated ultrasonic and touch sensors for wall detection and collision avoidance, fusing sensor data for reliable navigation decisions</li>
+          <li>Optimized pathfinding logic to find shortest routes, testing across multiple maze configurations to validate algorithm robustness</li>
+        </ul>
         <div class="project-tags">
-          <span>RobotC</span><span>LEGO EV3</span><span>Algorithms</span>
+          <span>RobotC</span><span>LEGO EV3</span><span>Algorithms</span><span>Pathfinding</span>
         </div>
       </div>
     </div>
     
+    <!-- CNC -->
     <div class="project-card no-media">
       <div class="project-media"></div>
       <div class="project-header">
@@ -893,27 +984,18 @@ footer{
         <span class="project-date">Academic</span>
       </div>
       <div class="project-body">
-        <p>Complete CNC program for precision machining with multi-tool sequences and safety protocols.</p>
+        <ul class="project-bullets">
+          <li>Wrote complete G-Code programs for precision CNC machining operations, including multi-tool sequences with proper tool changes and offsets</li>
+          <li>Designed toolpaths in CAM software, optimizing feed rates and spindle speeds for material removal efficiency and surface finish quality</li>
+          <li>Incorporated safety protocols including proper work coordinate setup, tool length compensation, and emergency stop conditions</li>
+        </ul>
         <div class="project-tags">
-          <span>G-Code</span><span>CNC</span><span>CAM</span>
+          <span>G-Code</span><span>CNC</span><span>CAM</span><span>Manufacturing</span>
         </div>
       </div>
     </div>
     
-    <div class="project-card no-media">
-      <div class="project-media"></div>
-      <div class="project-header">
-        <h3>Welded Beam Optimization</h3>
-        <span class="project-date">Academic</span>
-      </div>
-      <div class="project-body">
-        <p>Genetic algorithm achieving 89.7% cost reduction while maintaining structural integrity.</p>
-        <div class="project-tags">
-          <span>MATLAB</span><span>Genetic Algorithm</span><span>Optimization</span>
-        </div>
-      </div>
-    </div>
-    
+    <!-- Bicycle FEA -->
     <div class="project-card no-media">
       <div class="project-media"></div>
       <div class="project-header">
@@ -921,49 +1003,17 @@ footer{
         <span class="project-date">Academic</span>
       </div>
       <div class="project-body">
-        <p>FEA analysis and redesign achieving 33% safety factor increase with weight reduction.</p>
+        <ul class="project-bullets">
+          <li>Performed finite element analysis on a bicycle frame in SolidWorks, identifying stress concentrations and deflection under load</li>
+          <li>Redesigned critical joints and tube profiles to increase safety factor by 33% while reducing overall frame weight</li>
+          <li>Used CES EduPack for material selection, comparing aluminum alloys and steel grades for optimal strength-to-weight ratio</li>
+        </ul>
         <div class="project-tags">
-          <span>SolidWorks</span><span>FEA</span><span>CES EduPack</span>
+          <span>SolidWorks</span><span>FEA</span><span>CES EduPack</span><span>Design Optimization</span>
         </div>
       </div>
     </div>
     
-    <div class="project-card no-media">
-      <div class="project-media"></div>
-      <div class="project-header">
-        <h3>Arduino Security System</h3>
-        <span class="project-date">Academic</span>
-      </div>
-      <div class="project-body">
-        <p>Team-led project (95% grade) with ultrasonic, proximity, and light sensor integration.</p>
-        <div class="project-tags">
-          <span>Arduino</span><span>Multi-Sensor</span><span>Team Lead</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ EDUCATION ═══ -->
-<section id="education">
-  <div class="section-header">
-    <span class="section-num">04</span>
-    <h2 class="section-title">Education</h2>
-  </div>
-  
-  <div class="education-card">
-    <h3>Simon Fraser University</h3>
-    <h4>Bachelor of Applied Sciences in Mechatronic Systems Engineering</h4>
-    <p class="edu-date">Jan 2021 — Aug 2025 · Surrey, BC</p>
-    
-    <div class="education-honors">
-      <strong>Dean's Honour Roll</strong>
-      <span>Fall 2024</span>
-    </div>
-    
-    <p class="education-coursework">
-      <strong>Relevant Coursework:</strong> Machine Design, Electric Motors & Actuators, Industrial Control Systems, Manufacturing Processes, Feedback Control, Mechanics of Materials, Power Systems, Protection & Coordination, Power Electronics
-    </p>
   </div>
 </section>
 
@@ -978,14 +1028,8 @@ footer{
     <a href="mailto:heshamasim83@gmail.com" class="contact-link">
       <span>@</span> heshamasim83@gmail.com
     </a>
-    <a href="tel:604-787-0919" class="contact-link">
-      <span>☎</span> 604-787-0919
-    </a>
     <a href="https://linkedin.com/in/hesham-khan" target="_blank" class="contact-link">
       <span>in</span> LinkedIn
-    </a>
-    <a href="https://github.com/hesham-khan" target="_blank" class="contact-link">
-      <span>⌘</span> GitHub
     </a>
   </div>
 </section>
