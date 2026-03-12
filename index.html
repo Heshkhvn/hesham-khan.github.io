@@ -5,487 +5,692 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hesham Asim Khan | Mechatronics Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg:#080808;--s1:#0c0c0c;--s2:#121212;--s3:#181818;
-  --b1:#1a1a1a;--b2:#252525;--b3:#303030;
-  --acc:#e07020;--acc2:#f09040;--acc-dim:rgba(224,112,32,.12);
-  --txt:#e8e4dc;--txt2:#c4c0b8;--mut:#707068;--mut2:#484844;
-  --mono:'Space Mono',monospace;--sans:'Syne',sans-serif;
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--txt);font-family:var(--sans);line-height:1.6}
-
-body::before{
-  content:'';position:fixed;inset:0;
-  background:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
-  pointer-events:none;z-index:9999;
-}
-
-.grid-bg{
-  position:fixed;inset:0;z-index:0;
-  background-image:
-    linear-gradient(rgba(224,112,32,.01) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(224,112,32,.01) 1px,transparent 1px);
-  background-size:80px 80px;
-  pointer-events:none;
+  --bg: #ffffff;
+  --card: #f8fafc;
+  --card-hover: #f1f5f9;
+  --border: #e2e8f0;
+  --border-light: #cbd5e1;
+  --accent: #2563eb;
+  --accent-soft: rgba(37, 99, 235, 0.08);
+  --accent-medium: rgba(37, 99, 235, 0.12);
+  --text: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --sans: 'Inter', -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', monospace;
 }
 
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  display:flex;justify-content:space-between;align-items:center;
-  padding:1rem 3rem;
-  background:rgba(8,8,8,.95);
-  backdrop-filter:blur(20px);
-  border-bottom:1px solid var(--b1);
-}
-.nav-logo{
-  font-family:var(--mono);font-size:.75rem;
-  color:var(--acc);letter-spacing:.2em;
-  text-transform:uppercase;font-weight:700;
-}
-.nav-links{display:flex;gap:2.5rem;list-style:none}
-.nav-links a{
-  font-family:var(--mono);font-size:.65rem;
-  color:var(--mut);text-decoration:none;
-  letter-spacing:.1em;text-transform:uppercase;
-  transition:color .3s;
-}
-.nav-links a:hover{color:var(--acc)}
-
-.hero{
-  min-height:100vh;
-  display:flex;align-items:center;
-  padding:8rem 3rem 4rem;
-  position:relative;z-index:1;
-}
-.hero-content{
-  display:grid;
-  grid-template-columns:240px 1fr;
-  gap:4rem;
-  max-width:1100px;
-  margin:0 auto;
-  align-items:center;
-}
-.hero-photo{
-  width:240px;height:280px;
-  background:var(--s2);
-  border:2px solid var(--b2);
-  border-radius:6px;
-  overflow:hidden;
-  box-shadow:0 20px 60px rgba(0,0,0,.4);
-}
-.hero-photo img{
-  width:100%;height:100%;
-  object-fit:cover;
-  object-position:center top;
-}
-.hero-info h1{
-  font-family:var(--sans);
-  font-size:clamp(2rem,5vw,3.2rem);
-  font-weight:800;
-  letter-spacing:-.03em;
-  line-height:1.1;
-  margin-bottom:.5rem;
-}
-.hero-info h1 em{color:var(--acc);font-style:normal}
-.hero-degree{
-  font-family:var(--mono);font-size:.82rem;
-  color:var(--txt2);margin-bottom:.2rem;
-}
-.hero-university{
-  font-family:var(--mono);font-size:.72rem;
-  color:var(--mut);margin-bottom:1.5rem;
-}
-.hero-links{
-  display:flex;gap:1rem;flex-wrap:wrap;
-  margin-bottom:1.2rem;
-}
-.hero-links a{
-  font-family:var(--mono);font-size:.65rem;
-  color:var(--txt);text-decoration:none;
-  padding:.5rem 1rem;
-  border:1px solid var(--b2);
-  border-radius:4px;
-  transition:all .3s;
-}
-.hero-links a:hover{
-  border-color:var(--acc);
-  background:var(--acc-dim);
-  color:var(--acc);
-}
-.hero-location{
-  font-family:var(--mono);font-size:.7rem;
-  color:var(--mut);
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
-section{
-  padding:5rem 3rem;
-  position:relative;z-index:1;
-  max-width:1300px;
-  margin:0 auto;
+/* ═══════════════════════════════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════════════════════════════ */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
 }
-.section-header{
-  display:flex;align-items:center;gap:1.5rem;
-  margin-bottom:3rem;
-  padding-bottom:1rem;
-  border-bottom:1px solid var(--b1);
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.section-num{
-  font-family:var(--mono);font-size:.6rem;
-  color:var(--acc);font-weight:700;
-  padding:.4rem .7rem;
-  border:1px solid var(--acc);
-  border-radius:3px;
+.nav-logo {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text);
 }
-.section-title{
-  font-family:var(--sans);
-  font-size:clamp(1.3rem,3vw,1.8rem);
-  font-weight:700;
+.nav-logo span { color: var(--accent); }
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); }
+
+/* ═══════════════════════════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 8rem 2rem 4rem;
+}
+.hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.hero-image {
+  width: 280px;
+  height: 340px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--card);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--border);
+}
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hero-content h1 {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.03em;
+}
+.hero-content h1 span { color: var(--accent); }
+.hero-tagline {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+.hero-school {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+.hero-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.hero-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+.hero-links .primary {
+  background: var(--accent);
+  color: #fff;
+}
+.hero-links .primary:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+.hero-links .secondary {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.hero-links .secondary:hover {
+  border-color: var(--border-light);
+  background: var(--card-hover);
+}
+.hero-location {
+  font-size: 0.9rem;
+  color: var(--text-muted);
 }
 
-/* Education */
-.education-card{
-  background:var(--s1);
-  border:1px solid var(--b1);
-  border-radius:8px;
-  padding:2rem;
-  max-width:700px;
+/* ═══════════════════════════════════════════════════════════════════
+   SECTIONS
+═══════════════════════════════════════════════════════════════════ */
+section {
+  padding: 6rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
-.education-card h3{
-  font-family:var(--sans);font-size:1.2rem;font-weight:700;
-  margin-bottom:.3rem;
+.section-header {
+  margin-bottom: 3rem;
 }
-.education-card h4{
-  font-family:var(--mono);font-size:.8rem;color:var(--acc);
-  margin-bottom:.2rem;
+.section-label {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 0.375rem 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
 }
-.education-card .edu-date{
-  font-family:var(--mono);font-size:.68rem;color:var(--mut);
-  margin-bottom:1.2rem;
-}
-.education-honors{
-  padding:1rem;
-  background:var(--s2);
-  border-radius:5px;
-  margin-bottom:1rem;
-  display:inline-block;
-}
-.education-honors strong{
-  font-family:var(--mono);font-size:.65rem;
-  color:var(--acc);
-}
-.education-honors span{
-  font-family:var(--mono);font-size:.65rem;
-  color:var(--txt2);margin-left:.5rem;
-}
-.education-coursework{
-  font-family:var(--mono);font-size:.65rem;
-  color:var(--mut);line-height:1.7;
-}
-.education-coursework strong{color:var(--txt2)}
-
-/* Experience */
-.experience-list{display:flex;flex-direction:column;gap:1.5rem}
-
-.exp-card{
-  background:var(--s1);
-  border:1px solid var(--b1);
-  border-radius:8px;
-  overflow:hidden;
-  transition:border-color .3s;
-}
-.exp-card:hover{border-color:var(--b2)}
-.exp-card.expandable{cursor:pointer}
-.exp-card.expandable:hover{border-color:var(--acc)}
-
-.exp-header{
-  display:grid;
-  grid-template-columns:auto 1fr auto;
-  gap:1.5rem;
-  padding:1.5rem 1.8rem;
-  align-items:start;
-}
-.exp-header.no-logo{
-  grid-template-columns:1fr auto;
-}
-.exp-logo{
-  width:50px;height:50px;
-  background:var(--s2);
-  border:1px solid var(--b1);
-  border-radius:6px;
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;
-  overflow:hidden;
-}
-.exp-logo img{
-  width:100%;height:100%;
-  object-fit:contain;
-  padding:4px;
+.section-title {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
-.exp-main h3{
-  font-family:var(--sans);font-size:1.1rem;font-weight:700;
-  margin-bottom:.3rem;
+/* ═══════════════════════════════════════════════════════════════════
+   EDUCATION
+═══════════════════════════════════════════════════════════════════ */
+.education-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 700px;
 }
-.exp-main h4{
-  font-family:var(--mono);font-size:.72rem;color:var(--acc);
-  margin-bottom:.8rem;
+.education-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
 }
-.exp-main p{
-  font-family:var(--mono);font-size:.68rem;color:var(--txt2);
-  line-height:1.7;
+.education-card h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
 }
-.exp-bullets{
-  list-style:none;margin-top:.6rem;
+.education-meta {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
 }
-.exp-bullets li{
-  font-family:var(--mono);font-size:.62rem;color:var(--mut);
-  line-height:1.65;padding-left:1rem;position:relative;
-  margin-bottom:.4rem;
+.education-badge {
+  display: inline-block;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
 }
-.exp-bullets li::before{content:'→';position:absolute;left:0;color:var(--acc)}
-
-.exp-meta{text-align:right}
-.exp-date{
-  font-family:var(--mono);font-size:.65rem;color:var(--txt2);
-  margin-bottom:.2rem;
+.education-courses {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
 }
-.exp-location{
-  font-family:var(--mono);font-size:.58rem;color:var(--mut);
-}
-.exp-expand-hint{
-  font-family:var(--mono);font-size:.55rem;
-  color:var(--acc);margin-top:.8rem;
-  display:inline-flex;align-items:center;gap:.4rem;
-  padding:.35rem .7rem;
-  border:1px solid var(--acc);
-  border-radius:3px;
-}
-.exp-expand-hint::after{content:'▼';font-size:.45rem;transition:transform .3s}
-.exp-card.expanded .exp-expand-hint::after{transform:rotate(180deg)}
-
-.exp-projects{
-  display:none;
-  background:var(--bg);
-  border-top:1px solid var(--b1);
-  padding:1.5rem 1.8rem;
-}
-.exp-card.expanded .exp-projects{display:block}
-.exp-projects-title{
-  font-family:var(--mono);font-size:.6rem;
-  color:var(--mut);letter-spacing:.12em;
-  text-transform:uppercase;
-  margin-bottom:1.2rem;
-}
-.exp-project{
-  padding:1.2rem;
-  background:var(--s1);
-  border:1px solid var(--b1);
-  border-radius:6px;
-  margin-bottom:.8rem;
-}
-.exp-project:last-child{margin-bottom:0}
-.exp-project h5{
-  font-family:var(--sans);font-size:.95rem;font-weight:600;
-  margin-bottom:.3rem;
-}
-.exp-project .project-type{
-  font-family:var(--mono);font-size:.55rem;color:var(--acc);
-  margin-bottom:.6rem;text-transform:uppercase;letter-spacing:.08em;
-}
-.exp-project p{
-  font-family:var(--mono);font-size:.62rem;color:var(--mut);
-  line-height:1.7;
+.education-courses strong {
+  color: var(--text);
 }
 
-/* Skills */
-.skills-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
-  gap:1.2rem;
+/* ═══════════════════════════════════════════════════════════════════
+   EXPERIENCE
+═══════════════════════════════════════════════════════════════════ */
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
-.skill-card{
-  background:var(--s1);
-  border:1px solid var(--b1);
-  border-radius:6px;
-  padding:1.5rem;
-  transition:border-color .3s;
+.exp-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s;
 }
-.skill-card:hover{border-color:var(--acc)}
-.skill-label{
-  font-family:var(--mono);font-size:.55rem;
-  color:var(--acc);font-weight:700;
-  letter-spacing:.15em;text-transform:uppercase;
-  margin-bottom:1rem;
-  padding-bottom:.6rem;
-  border-bottom:1px solid var(--b1);
+.exp-card:hover {
+  border-color: var(--border-light);
 }
-.skill-items{display:flex;flex-wrap:wrap;gap:.4rem}
-.skill-tag{
-  font-family:var(--mono);font-size:.6rem;
-  color:var(--txt2);
-  padding:.35rem .6rem;
-  background:var(--s2);
-  border:1px solid var(--b1);
-  border-radius:3px;
-  transition:all .2s;
+.exp-card.expandable {
+  cursor: pointer;
 }
-.skill-tag:hover{
-  border-color:var(--acc);
-  background:var(--acc-dim);
-  color:var(--acc);
+.exp-card.expandable:hover {
+  border-color: var(--accent);
+}
+.exp-header {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 1.25rem;
+  padding: 1.75rem;
+  align-items: start;
+}
+.exp-header.no-logo {
+  grid-template-columns: 1fr;
+}
+.exp-meta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+.exp-meta {
+  text-align: right;
+  flex-shrink: 0;
+  min-width: 120px;
+}
+.exp-logo {
+  width: 56px;
+  height: 56px;
+  background: var(--bg);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.exp-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 8px;
+}
+.exp-main h3 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: var(--text);
+}
+.exp-main h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+.exp-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  gap: 2rem;
+}
+.exp-title-row .exp-meta {
+  text-align: right;
+  flex-shrink: 0;
+}
+.exp-title-row h4 {
+  margin-bottom: 0;
+}
+.exp-bullets {
+  list-style: none;
+}
+.exp-bullets li {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  padding-left: 1rem;
+  position: relative;
+  margin-bottom: 0.4rem;
+}
+.exp-bullets li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+.exp-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  flex-shrink: 0;
+}
+.exp-date {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+.exp-location {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.exp-expand-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 0.5rem 0.875rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+  transition: background 0.2s;
+}
+.exp-expand-btn:hover {
+  background: var(--accent-medium);
+}
+.exp-expand-btn::after {
+  content: '↓';
+  transition: transform 0.2s;
+}
+.exp-card.expanded .exp-expand-btn::after {
+  transform: rotate(180deg);
+}
+.exp-projects {
+  display: none;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  padding: 1.75rem;
+}
+.exp-card.expanded .exp-projects {
+  display: block;
+}
+.exp-projects-title {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+.exp-project {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+.exp-project:last-child { margin-bottom: 0; }
+.exp-project h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+.exp-project-type {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+.exp-project p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.7;
 }
 
-/* Projects */
-.projects-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
-  gap:1.5rem;
+/* ═══════════════════════════════════════════════════════════════════
+   SKILLS
+═══════════════════════════════════════════════════════════════════ */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.25rem;
 }
-.project-card{
-  background:var(--s1);
-  border:1px solid var(--b1);
-  border-radius:8px;
-  overflow:hidden;
-  transition:border-color .3s;
+.skill-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: border-color 0.2s;
 }
-.project-card:hover{border-color:var(--acc)}
+.skill-card:hover {
+  border-color: var(--border-light);
+}
+.skill-label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+.skill-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.skill-tag {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: var(--bg);
+  padding: 0.375rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+}
+.skill-tag:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
 
-.project-media{
-  width:100%;
-  aspect-ratio:16/9;
-  background:var(--s2);
-  border-bottom:1px solid var(--b1);
-  overflow:hidden;
+/* ═══════════════════════════════════════════════════════════════════
+   PROJECTS
+═══════════════════════════════════════════════════════════════════ */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 1.5rem;
+}
+.project-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.project-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+.project-media {
+  aspect-ratio: 16/9;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
 }
 .project-media img,
-.project-media video{
-  width:100%;height:100%;
-  object-fit:cover;
+.project-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-.project-card.no-media .project-media{display:none}
+.project-card.no-media .project-media { display: none; }
+.project-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 1rem;
+}
+.project-header h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.project-date {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.project-body {
+  padding: 1.25rem 1.5rem;
+}
+.project-bullets {
+  list-style: none;
+  margin-bottom: 1rem;
+}
+.project-bullets li {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  padding-left: 1rem;
+  position: relative;
+  margin-bottom: 0.4rem;
+}
+.project-bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 4px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+.project-tags span {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+}
 
-.project-header{
-  padding:1.2rem 1.5rem;
-  border-bottom:1px solid var(--b1);
-  display:flex;justify-content:space-between;align-items:start;
-  gap:1rem;
+/* ═══════════════════════════════════════════════════════════════════
+   CONTACT
+═══════════════════════════════════════════════════════════════════ */
+.contact-grid {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
-.project-header h3{
-  font-family:var(--sans);font-size:.95rem;font-weight:700;
-  line-height:1.3;
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  padding: 1rem 1.5rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: all 0.2s;
 }
-.project-date{
-  font-family:var(--mono);font-size:.55rem;color:var(--acc);
-  white-space:nowrap;
+.contact-link:hover {
+  border-color: var(--accent);
+  background: var(--card-hover);
+  transform: translateY(-2px);
 }
-.project-body{padding:1.2rem 1.5rem}
-.project-body p{
-  font-family:var(--mono);font-size:.62rem;
-  color:var(--mut);line-height:1.7;
-  margin-bottom:.8rem;
-}
-.project-bullets{
-  list-style:none;margin-bottom:1rem;
-}
-.project-bullets li{
-  font-family:var(--mono);font-size:.6rem;color:var(--mut);
-  line-height:1.65;padding-left:1rem;position:relative;
-  margin-bottom:.35rem;
-}
-.project-bullets li::before{content:'→';position:absolute;left:0;color:var(--acc)}
-.project-tags{display:flex;flex-wrap:wrap;gap:.35rem}
-.project-tags span{
-  font-family:var(--mono);font-size:.52rem;
-  color:var(--acc);
-  padding:.25rem .55rem;
-  background:var(--acc-dim);
-  border-radius:3px;
+.contact-link span {
+  color: var(--accent);
+  font-size: 1.1rem;
 }
 
-/* Contact */
-.contact-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:1rem;
-  max-width:500px;
+/* ═══════════════════════════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════════════════════════ */
+footer {
+  padding: 3rem 2rem;
+  border-top: 1px solid var(--border);
+  text-align: center;
 }
-.contact-link{
-  display:flex;align-items:center;gap:.8rem;
-  font-family:var(--mono);font-size:.7rem;
-  color:var(--txt);text-decoration:none;
-  padding:1rem 1.2rem;
-  background:var(--s1);
-  border:1px solid var(--b1);
-  border-radius:5px;
-  transition:all .3s;
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
-.contact-link:hover{
-  border-color:var(--acc);
-  background:var(--s2);
+.footer-copy {
+  font-size: 0.85rem;
+  color: var(--text-muted);
 }
-.contact-link span{color:var(--acc)}
+.footer-status {
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 500;
+}
 
-footer{
-  padding:2rem 3rem;
-  border-top:1px solid var(--b1);
-  display:flex;justify-content:space-between;
-  font-family:var(--mono);font-size:.6rem;color:var(--mut);
-  max-width:1300px;margin:0 auto;
-  flex-wrap:wrap;gap:1rem;
+/* ═══════════════════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2.5rem;
+  }
+  .hero-image {
+    margin: 0 auto;
+    width: 220px;
+    height: 280px;
+  }
+  .hero-links { justify-content: center; }
+  nav { padding: 1rem; }
+  .nav-links { gap: 1.25rem; }
+  section { padding: 4rem 1.5rem; }
+  .exp-header {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .exp-logo { display: none; }
+  .exp-meta {
+    text-align: left;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
 }
-.footer-status{color:var(--acc)}
-
-@media(max-width:900px){
-  .hero-content{grid-template-columns:1fr;gap:2rem;text-align:center}
-  .hero-photo{margin:0 auto;width:200px;height:240px}
-  .hero-links{justify-content:center}
-  nav{padding:1rem 1.5rem}
-  .nav-links{gap:1.5rem}
-  section{padding:3rem 1.5rem}
-  .exp-header{grid-template-columns:1fr;gap:1rem}
-  .exp-logo{display:none}
-  .exp-meta{text-align:left;display:flex;gap:1rem}
-}
-@media(max-width:600px){
-  .nav-links{display:none}
-  .projects-grid{grid-template-columns:1fr}
-  .skills-grid{grid-template-columns:1fr}
-  footer{flex-direction:column;text-align:center}
+@media (max-width: 600px) {
+  .nav-links { display: none; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .footer-content { flex-direction: column; text-align: center; }
 }
 </style>
 </head>
 <body>
 
-<div class="grid-bg"></div>
-
 <nav>
-  <div class="nav-logo">Hesham Khan</div>
-  <ul class="nav-links">
-    <li><a href="#education">Education</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+  <div class="nav-container">
+    <div class="nav-logo">Hesham<span>.</span></div>
+    <ul class="nav-links">
+      <li><a href="#education">Education</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
 </nav>
 
 <!-- ═══ HERO ═══ -->
 <section class="hero" id="home">
-  <div class="hero-content">
-    <div class="hero-photo">
+  <div class="hero-container">
+    <div class="hero-image">
       <img src="hesham-photo.png" alt="Hesham Khan">
     </div>
-    <div class="hero-info">
-      <h1>Hesham Asim <em>Khan</em></h1>
-      <p class="hero-degree">BASc Mechatronic Systems Engineering</p>
-      <p class="hero-university">Simon Fraser University · Class of 2025</p>
+    <div class="hero-content">
+      <h1>Hesham Asim <span>Khan</span></h1>
+      <p class="hero-tagline">BASc Mechatronic Systems Engineering</p>
+      <p class="hero-school">Simon Fraser University · Class of 2025</p>
       <div class="hero-links">
-        <a href="https://linkedin.com/in/hesham-khan" target="_blank">LinkedIn</a>
-        <a href="/cdn-cgi/l/email-protection#87efe2f4efe6eae6f4eeeabfb4c7e0eae6eeeba9e4e8ea">Email</a>
+        <a href="mailto:heshamasim83@gmail.com" class="primary">Get in Touch</a>
+        <a href="https://linkedin.com/in/hesham-khan" target="_blank" class="secondary">LinkedIn ↗</a>
       </div>
       <p class="hero-location">📍 Toronto, Ontario · Open to Relocation</p>
     </div>
@@ -495,21 +700,16 @@ footer{
 <!-- ═══ EDUCATION ═══ -->
 <section id="education">
   <div class="section-header">
-    <span class="section-num">01</span>
+    <span class="section-label">01</span>
     <h2 class="section-title">Education</h2>
   </div>
   
   <div class="education-card">
     <h3>Simon Fraser University</h3>
     <h4>Bachelor of Applied Sciences in Mechatronic Systems Engineering</h4>
-    <p class="edu-date">Jan 2021 — Aug 2025 · Surrey, BC</p>
-    
-    <div class="education-honors">
-      <strong>Dean's Honour Roll</strong>
-      <span>Fall 2024</span>
-    </div>
-    
-    <p class="education-coursework">
+    <p class="education-meta">Jan 2021 — Aug 2025 · Surrey, BC</p>
+    <div class="education-badge">🏆 Dean's Honour Roll — Fall 2024</div>
+    <p class="education-courses">
       <strong>Relevant Coursework:</strong> Machine Design, Electric Motors & Actuators, Industrial Control Systems, Manufacturing Processes, Feedback Control, Mechanics of Materials, Power Systems, Protection & Coordination, Power Electronics
     </p>
   </div>
@@ -518,7 +718,7 @@ footer{
 <!-- ═══ EXPERIENCE ═══ -->
 <section id="experience">
   <div class="section-header">
-    <span class="section-num">02</span>
+    <span class="section-label">02</span>
     <h2 class="section-title">Professional Experience</h2>
   </div>
   
@@ -533,20 +733,14 @@ footer{
           <h3>Junior Electrical Engineering Professional</h3>
           <h4>CIMA+</h4>
           <ul class="exp-bullets">
-            <li>Designed electrical packages for industrial facilities using AutoCAD and Revit, delivering 100% compliance with tender specifications across multiple project phases</li>
-            <li>Collected on-site Arc Flash data including breaker settings and transformer ratings, enabling accurate power system studies and safety analysis for facility upgrades</li>
-            <li>Coordinated with I&C teams to align Motor Control Schedules with PLC schematics, identifying integration conflicts early and ensuring seamless power-control logic</li>
-            <li>Resolved multi-disciplinary clashes using Bluebeam and BIM 360, reducing construction RFIs by flagging routing conflicts before they reached the field</li>
-            <li>Reviewed Shop Drawings and issued Site Instructions within 48-hour turnarounds, keeping project timelines on track during construction phases</li>
-            <li>Performed 3D laser scanning and site audits to generate accurate as-built models, verifying cable tray routing against design intent</li>
-            <li>Drafted Single-Line Diagrams, panel schedules, and grounding layouts to optimize load distribution and improve system reliability</li>
-            <li>Partnered with Project Managers on Technical Bid Evaluations, analyzing vendor quotes against design specs to ensure accurate project costing</li>
-            <li>Authored Equipment Datasheets, Specifications, and Material Requisitions, ensuring all procured components met CEC and utility safety requirements</li>
-            <li>Delivered Electric Heat Trace Design and Area Classification Drawings for hazardous locations, validating circuit lengths and protection settings against code</li>
-            <li>Compiled Construction Work Packages including Wiring Diagrams, Cable Schedules, and Load Lists, streamlining contractor installation and reducing field queries</li>
-            <li>Conducted lighting calculations using AGi32, generating optimized layouts that met IES illumination standards for industrial workspaces</li>
+            <li>Designed electrical packages for industrial facilities using AutoCAD and Revit, delivering 100% compliance with tender specifications</li>
+            <li>Collected Arc Flash data on-site (breaker settings, transformer ratings) enabling accurate power system studies and safety analysis</li>
+            <li>Coordinated with I&C teams to align Motor Control Schedules with PLC schematics, ensuring seamless power-control integration</li>
+            <li>Resolved multi-disciplinary clashes using Bluebeam and BIM 360, reducing construction RFIs before they reached the field</li>
+            <li>Reviewed Shop Drawings and issued Site Instructions within 48-hour turnarounds, keeping project timelines on track</li>
+            <li>Performed 3D laser scanning and site audits to generate accurate as-built models and verify cable tray routing</li>
           </ul>
-          <div class="exp-expand-hint">View Key Projects</div>
+          <div class="exp-expand-btn">View Key Projects</div>
         </div>
         <div class="exp-meta">
           <div class="exp-date">Apr 2024 — Sep 2025</div>
@@ -557,13 +751,13 @@ footer{
         <div class="exp-projects-title">Notable Projects</div>
         <div class="exp-project">
           <h5>High-Voltage Capacitor Bank Station</h5>
-          <div class="project-type">Utility Infrastructure · May 2024 — Jul 2025</div>
-          <p>Led full electrical design of a utility-connected capacitor bank station. Delivered power distribution layouts, control cabling, grounding and bonding systems, protection coordination inputs, and heat trace systems through to issued-for-construction. Designed interior and exterior lighting systems using AGi32 studies.</p>
+          <div class="exp-project-type">Utility Infrastructure · May 2024 — Jul 2025</div>
+          <p>Led full electrical design of a utility-connected capacitor bank station. Delivered power distribution layouts, control cabling, grounding and bonding systems, protection coordination inputs, and heat trace systems through to issued-for-construction.</p>
         </div>
         <div class="exp-project">
           <h5>Hospital Emergency Power Consolidation</h5>
-          <div class="project-type">Healthcare Infrastructure · Apr 2024 — Jan 2025</div>
-          <p>Performed field audits and produced consolidated as-built SLDs for essential and emergency power distribution systems within acute care facilities. Verified transformer ratings, breaker settings, and distribution configurations to ensure code compliance and life-safety system continuity.</p>
+          <div class="exp-project-type">Healthcare Infrastructure · Apr 2024 — Jan 2025</div>
+          <p>Performed field audits and produced consolidated as-built SLDs for essential and emergency power distribution systems. Verified transformer ratings, breaker settings, and distribution configurations for code compliance.</p>
         </div>
       </div>
     </div>
@@ -572,19 +766,23 @@ footer{
     <div class="exp-card">
       <div class="exp-header no-logo">
         <div class="exp-main">
-          <h3>Software Developer</h3>
-          <h4>Jardeek International FZC</h4>
+          <div class="exp-title-row">
+            <div>
+              <h3>Software Developer</h3>
+              <h4>Jardeek International FZC</h4>
+            </div>
+            <div class="exp-meta">
+              <span class="exp-date">May 2025 — Dec 2025</span>
+              <span class="exp-location">Riyadh, SA (Remote)</span>
+            </div>
+          </div>
           <ul class="exp-bullets">
-            <li>Built a full-stack inventory dashboard using Java Spring Boot and React, giving warehouse staff real-time visibility into stock levels across multiple locations</li>
-            <li>Deployed backend services and database resources on AWS (EC2, RDS), ensuring reliable access for remote team members across different time zones</li>
-            <li>Wrote Python scripts to automate manual data entry tasks, parsing Excel sheets and updating the database — reducing processing time by 40%</li>
-            <li>Set up CI/CD pipelines using Docker and GitHub Actions, enabling faster feature releases and streamlined bug fixes with minimal downtime</li>
-            <li>Created RESTful API endpoints that allowed internal teams to query product availability and shipment status directly from their existing tools</li>
+            <li>Built a full-stack inventory dashboard using Java Spring Boot and React, providing warehouse staff with real-time stock visibility across multiple locations</li>
+            <li>Deployed backend services on AWS (EC2, RDS) ensuring reliable access for remote team members across different time zones</li>
+            <li>Wrote Python scripts to automate manual data entry by parsing Excel sheets, reducing processing time by 40%</li>
+            <li>Set up CI/CD pipelines using Docker and GitHub Actions enabling faster releases and streamlined bug fixes</li>
+            <li>Created RESTful API endpoints allowing internal teams to query product availability and shipment status directly</li>
           </ul>
-        </div>
-        <div class="exp-meta">
-          <div class="exp-date">May 2025 — Dec 2025</div>
-          <div class="exp-location">Riyadh, SA (Remote)</div>
         </div>
       </div>
     </div>
@@ -596,21 +794,23 @@ footer{
           <img src="sfu-logo.png" alt="SFU">
         </div>
         <div class="exp-main">
-          <h3>Mechatronics Research Engineer</h3>
-          <h4>Simon Fraser University</h4>
+          <div class="exp-title-row">
+            <div>
+              <h3>Mechatronics Research Engineer</h3>
+              <h4>Simon Fraser University</h4>
+            </div>
+            <div class="exp-meta">
+              <span class="exp-date">May — Aug 2022</span>
+              <span class="exp-location">Surrey, BC</span>
+            </div>
+          </div>
           <ul class="exp-bullets">
-            <li>Programmed and calibrated a dual-robot cell (ABB & Fanuc), adjusting Tool Center Point parameters and kinematic trajectories to improve material deposition accuracy by 25%</li>
-            <li>Used 3D laser scanning (EinScan Pro HD) to reverse-engineer patient-specific geometries into SolidWorks models, accelerating the design iteration loop for additive manufacturing</li>
-            <li>Modeled end-effector geometries and splints in SolidWorks, running ANSYS simulations to optimize for weight reduction while maintaining structural stiffness</li>
-            <li>Prototyped and 3D printed capacitive touch sensors for pressure mapping, applying iterative root-cause analysis to resolve signal noise and improve data reliability</li>
-            <li>Maintained design verification logs and assembly notes during prototype testing, ensuring full traceability and adherence to QA protocols for manufacturing scaling</li>
-            <li>Performed root-cause analysis on failed prints and electromechanical misalignments, debugging hardware integration issues to improve system consistency</li>
-            <li>Designed custom mechanical fixtures and analyzed time-study data to redesign workflows, reducing cycle time and improving throughput</li>
+            <li>Programmed and calibrated a dual-robot cell (ABB & Fanuc), improving material deposition accuracy by 25%</li>
+            <li>Used 3D laser scanning (EinScan Pro HD) to reverse-engineer patient geometries into SolidWorks models</li>
+            <li>Ran ANSYS simulations to optimize end-effector geometries for weight reduction while maintaining stiffness</li>
+            <li>Prototyped capacitive touch sensors for pressure mapping, resolving signal noise through iterative debugging</li>
+            <li>Maintained design verification logs during prototype testing, ensuring QA traceability for manufacturing</li>
           </ul>
-        </div>
-        <div class="exp-meta">
-          <div class="exp-date">May 2022 — Aug 2022</div>
-          <div class="exp-location">Surrey, BC</div>
         </div>
       </div>
     </div>
@@ -619,21 +819,23 @@ footer{
     <div class="exp-card">
       <div class="exp-header no-logo">
         <div class="exp-main">
-          <h3>Co-Owner / Mechanical Technician</h3>
-          <h4>Automotive Restoration Business</h4>
+          <div class="exp-title-row">
+            <div>
+              <h3>Co-Owner / Mechanical Technician</h3>
+              <h4>Automotive Restoration Business</h4>
+            </div>
+            <div class="exp-meta">
+              <span class="exp-date">Apr 2022 — Sep 2025</span>
+              <span class="exp-location">Surrey, BC</span>
+            </div>
+          </div>
           <ul class="exp-bullets">
-            <li>Managed the full buy-fix-sell lifecycle — from sourcing salvage vehicles and running pre-purchase inspections to controlling reconditioning budgets and hitting profit targets</li>
-            <li>Performed body restoration work including stud welding for dent repair and precision panel alignment, restoring exterior geometry to OEM standards</li>
-            <li>Diagnosed complex intermittent electrical faults in wiring harnesses by tracing factory schematics, restoring function to instrument clusters, sensors, and modules</li>
-            <li>Completed mechanical repairs required for safety certification, including suspension work, brake service, and replacement of damaged structural components</li>
-            <li>Handled full refinishing using HVLP spray equipment — from surface prep and priming through to final clear coat application</li>
-            <li>Fabricated custom interior electronics including fiber-optic starlight headliners and ambient lighting systems, ensuring safe wire routing and proper circuit integration</li>
-            <li>Performed deep cosmetic restoration with full interior disassembly and exterior paint correction, delivering showroom-quality presentation for resale</li>
+            <li>Managed full buy-fix-sell lifecycle from sourcing salvage vehicles through pre-purchase inspections to controlling reconditioning budgets</li>
+            <li>Performed body restoration work including stud welding for dent repair and precision panel alignment to OEM standards</li>
+            <li>Diagnosed intermittent electrical faults by tracing factory schematics, restoring function to instrument clusters and modules</li>
+            <li>Completed mechanical repairs required for safety certification including suspension, brakes, and structural components</li>
+            <li>Handled full refinishing process using HVLP spray equipment from surface preparation through final clear coat application</li>
           </ul>
-        </div>
-        <div class="exp-meta">
-          <div class="exp-date">Apr 2022 — Sep 2025</div>
-          <div class="exp-location">Surrey, BC</div>
         </div>
       </div>
     </div>
@@ -643,7 +845,7 @@ footer{
 <!-- ═══ SKILLS ═══ -->
 <section id="skills">
   <div class="section-header">
-    <span class="section-num">03</span>
+    <span class="section-label">03</span>
     <h2 class="section-title">Technical Skills</h2>
   </div>
   
@@ -791,13 +993,13 @@ footer{
 <!-- ═══ PROJECTS ═══ -->
 <section id="projects">
   <div class="section-header">
-    <span class="section-num">04</span>
+    <span class="section-label">04</span>
     <h2 class="section-title">Engineering Projects</h2>
   </div>
   
   <div class="projects-grid">
     
-    <!-- PLC MQTT Pipeline - NEW -->
+    <!-- PLC MQTT Pipeline -->
     <div class="project-card no-media">
       <div class="project-media"></div>
       <div class="project-header">
@@ -838,7 +1040,7 @@ footer{
       </div>
     </div>
     
-    <!-- Catapult -->
+    <!-- Automated Catapult -->
     <div class="project-card no-media">
       <div class="project-media"></div>
       <div class="project-header">
@@ -1020,13 +1222,26 @@ footer{
 <!-- ═══ CONTACT ═══ -->
 <section id="contact">
   <div class="section-header">
-    <span class="section-num">05</span>
+    <span class="section-label">05</span>
     <h2 class="section-title">Get in Touch</h2>
   </div>
   
   <div class="contact-grid">
-    <a href="/cdn-cgi/l/email-protection#325a57415a535f53415b5f0a0172555f535b5e1c515d5f" class="contact-link">
-      <span>@</span> <span class="__cf_email__" data-cfemail="fe969b8d969f939f8d9793c6cdbe99939f9792d09d9193">[email&#160;protected]</span>
+    <a href="mailto:heshamasim83@gmail.com" class="contact-link">
+      <span>✉</span> heshamasim83@gmail.com
     </a>
     <a href="https://linkedin.com/in/hesham-khan" target="_blank" class="contact-link">
-      <span>in</span> Li
+      <span>in</span> LinkedIn
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-content">
+    <p class="footer-copy">© 2025 Hesham Asim Khan</p>
+    <p class="footer-status">Open to Opportunities</p>
+  </div>
+</footer>
+
+</body>
+</html>
