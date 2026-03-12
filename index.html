@@ -367,39 +367,23 @@ nav.scrolled {
   border-radius: 20px;
   box-shadow: var(--shadow-xl);
 }
-.hero-floating-card {
-  position: absolute;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 0.75rem 1rem;
-  box-shadow: var(--shadow-lg);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  animation: float 4s ease-in-out infinite;
-}
-.hero-floating-card.card-1 {
-  top: 20%;
-  right: -30px;
-  animation-delay: 0s;
-}
-.hero-floating-card.card-2 {
-  bottom: 25%;
-  left: -40px;
-  animation-delay: 1s;
-}
-.hero-floating-card .icon {
-  width: 32px;
-  height: 32px;
-  background: var(--accent-soft);
-  border-radius: 8px;
+
+.hero-status {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--accent);
+  gap: 0.5rem;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--success);
+}
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--success);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
 }
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -1090,7 +1074,6 @@ footer {
   .hero-stats { justify-content: center; }
   .hero-links { justify-content: center; }
   .hero-description { margin: 0 auto 2rem; }
-  .hero-floating-card { display: none; }
   nav { padding: 1rem; }
   section { padding: 4rem 1.5rem; }
   .education-card {
@@ -1162,14 +1145,10 @@ footer {
     <div class="hero-image">
       <div class="hero-image-wrapper">
         <img src="hesham-photo.png" alt="Hesham Khan">
-        <div class="hero-floating-card card-1">
-          <div class="icon">⚡</div>
-          <span>PLC & Controls</span>
-        </div>
-        <div class="hero-floating-card card-2">
-          <div class="icon">🔧</div>
-          <span>CAD & FEA</span>
-        </div>
+      </div>
+      <div class="hero-status">
+        <span class="status-dot"></span>
+        Available for work
       </div>
     </div>
   </div>
